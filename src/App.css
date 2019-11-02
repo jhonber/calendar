@@ -20,3 +20,44 @@
 .App-link {
   color: #09d3ac;
 }
+
+.Month-header {
+  background-color: #3a79f7;
+  align-items: center;
+  justify-content: center;
+}
+
+.Day-name {
+  color: white;
+  font-size: calc(10px + 2vmin);
+  padding: 2px;
+}
+
+.Day {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 34px;
+}
+
+.Row-style {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.Column-style {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
