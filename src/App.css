@@ -22,30 +22,34 @@
 }
 
 .Month-header {
-  background-color: #3a79f7;
   align-items: center;
   justify-content: center;
+  display: flex;
+}
+
+.Header {
+  background-color: #3a79f7;
 }
 
 .Day-name {
   color: white;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(1px + 2vmin);
   padding: 2px;
+  font-weight: bold;
 }
 
 .Day {
   background: #fff;
   border: 1px solid #999;
   float: left;
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 34px;
-  height: 34px;
+  font-size: calc(1px + 2vmin);
+  height: 70px;
   margin-right: -1px;
   margin-top: -1px;
-  padding: 0;
+  padding-left: 4px;
   text-align: center;
-  width: 34px;
+  width: 100px;
+  display: inline-flex;
 }
 
 .Row-style {
