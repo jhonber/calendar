@@ -1,9 +1,12 @@
 import moment from 'moment'
 // Filters Reducer
 
+const stringStartDate = moment().format('YYYY-MM-01')
+const stringEndDate = moment().format('YYYY-MM-') + moment().daysInMonth()
+
 const filtersReducerDefaultState = {
-  startDate: moment().startOf('month'),
-  endDate: moment().endOf('month')
+  startDate: moment(stringStartDate),
+  endDate: moment(stringEndDate)
 }
 
 export default (state = filtersReducerDefaultState, action) => {
