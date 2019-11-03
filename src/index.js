@@ -27,6 +27,22 @@ store.dispatch(addReminder({
   city: 'Pereira'
 }))
 
+store.dispatch(addReminder({
+  text: 'Cita',
+  color: 'amarillo',
+  date: '4 dic',
+  time: '19:00',
+  city: 'Pereira'
+}))
+store.dispatch(addReminder({
+  text: 'Cita',
+  color: 'amarillo',
+  date: '4 dic',
+  time: '19:00',
+  city: 'Pereira'
+}))
+
+
 const state = store.getState()
 console.log(state)
 const data = getSortedReminders(state.reminders, state.filters)
