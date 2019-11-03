@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import getRemindersRange from '../redux/selectors/reminders'
 import Header from './header'
 import Day from './day'
 import '../App.css'
@@ -63,7 +64,7 @@ class Month extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    reminders: state.reminders
+    reminders: getRemindersRange(state.reminders, state.filters)
   }
 }
 
