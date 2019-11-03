@@ -2,11 +2,11 @@
 import moment from 'moment'
 
 let nextMonth, nextYear, nextDate, nextInitialDayOfWeek, nextNumberOfDays
-const currentDate = moment()
+const currentDate = moment().startOf('month')
 const monthInit = {
   year: currentDate.year(),
   month: currentDate.month(),
-  initialDayOfWeek: currentDate.weekday(),
+  initialDayOfWeek: currentDate.day(),
   numberOfDays: currentDate.daysInMonth()
 }
 
@@ -20,7 +20,7 @@ const months = (state = monthInit, action) => {
       nextMonth = (state.month + 1) % 12
       nextYear = nextMonth === 0 ? state.year + 1 : state.year
       nextDate = getDate(nextYear, nextMonth)
-      nextInitialDayOfWeek = nextDate.weekday()
+      nextInitialDayOfWeek = nextDate.day()
       nextNumberOfDays = nextDate.daysInMonth()
       return {
         year: nextYear,
@@ -32,7 +32,7 @@ const months = (state = monthInit, action) => {
       nextMonth = (state.month - 1 + 12) % 12
       nextYear = nextMonth === 11 ? state.year - 1 : state.year
       nextDate = getDate(nextYear, nextMonth)
-      nextInitialDayOfWeek = nextDate.weekday()
+      nextInitialDayOfWeek = nextDate.day()
       nextNumberOfDays = nextDate.daysInMonth()
       return {
         year: nextYear,
