@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import uuid from 'uuid'
 import getRemindersRange from '../redux/selectors/reminders'
 import Header from './header'
 import Day from './day'
@@ -12,7 +13,7 @@ class Month extends React.Component {
       name: 'January',
       year: 2019,
       day: 1,
-      board: Array(7).fill(Array(5).fill(0)),
+      board: Array(6).fill(Array(7).fill(0)),
       daysOfWeek: [
         'Sunday',
         'Monday',
@@ -26,26 +27,28 @@ class Month extends React.Component {
   }
 
   createBoard () {
-    let cnt = 1
     return (
-      this.state.board.map((rows, dayIndex) => {
+      this.state.board.map((rows) => {
         return (
-          <div key={rows + dayIndex} className='Column-style Header'>
-            <div className='Month-header'>
-              <Header
-                label={this.state.daysOfWeek[dayIndex]}
-                styleName='Day-name'
-              />
-            </div>
-            {rows.map((label, i) => {
-              return (
-                <Day
-                  key={label + i}
-                  label={cnt++}
-                  items={this.props.reminders}
+          <div key={uuid()} className='Row-style'>
+            {
+              rows.map((curDay, dayIndex) => {
+                const dayView = <Day
+                  key={uuid()}
+                  label={curDay}
+                  items={this.filterRemindersByDay(this.props.reminders, curDay)}
                 />
-              )
-            })}
+
+                const headerView = <div key={uuid()} className='Month-header Header'>
+                  <Header
+                    label={this.state.daysOfWeek[dayIndex]}
+                    styleName='Day-name'
+                  />
+                </div>
+
+                return (curDay === -1 ? headerView : dayView)
+              })
+            }
           </div>
         )
       })
@@ -55,7 +58,7 @@ class Month extends React.Component {
   render () {
     console.log('List of reminders: ', this.props.reminders)
     return (
-      <div className='Row-style'>
+      <div className='Column-style'>
         {this.createBoard()}
       </div>
     )
