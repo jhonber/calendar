@@ -1,9 +1,10 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import Header from './header'
 import Day from './day'
 import '../App.css'
 
-export default class Month extends React.Component {
+class Month extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -44,7 +45,7 @@ export default class Month extends React.Component {
   }
 
   render () {
-    console.log(this.state.board)
+    console.log('List of reminders: ', this.props.reminders)
     return (
       <div className='Row-style'>
         {this.createBoard()}
@@ -52,3 +53,11 @@ export default class Month extends React.Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    reminders: state.reminders
+  }
+}
+
+export default connect(mapStateToProps)(Month)
