@@ -1,12 +1,14 @@
 import { createStore, combineReducers } from 'redux'
 import remindersReducer from '../reducers/reminders'
 import filtersReducer from '../reducers/filters'
+import monthReducers from '../reducers/months'
 
 export default () => {
   const store = createStore(
     combineReducers({
       reminders: remindersReducer,
-      filters: filtersReducer
+      filters: filtersReducer,
+      months: monthReducers
     })
   )
 
