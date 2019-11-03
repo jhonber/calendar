@@ -31,11 +31,18 @@ class Month extends React.Component {
         return (
           <div key={rows + dayIndex} className='Column-style Header'>
             <div className='Month-header'>
-              <Header label={this.state.daysOfWeek[dayIndex]} styleName='Day-name' />
+              <Header
+                label={this.state.daysOfWeek[dayIndex]}
+                styleName='Day-name'
+              />
             </div>
             {rows.map((label, i) => {
               return (
-                <Day key={label + i} label={cnt++} />
+                <Day
+                  key={label + i}
+                  label={cnt++}
+                  items={this.props.reminders}
+                />
               )
             })}
           </div>
