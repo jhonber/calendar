@@ -18,6 +18,20 @@ class Month extends React.Component {
         'Thursday',
         'Friday',
         'Saturday'
+      ],
+      monthsOfYear: [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
       ]
     }
   }
@@ -60,9 +74,18 @@ class Month extends React.Component {
 
   render () {
     console.log('List of reminders: ', this.props.reminders)
+    const monthName = this.state.monthsOfYear[this.props.storeMonth.month]
+    const year = this.props.storeMonth.year
+    const title = <div className='Title'>
+      {monthName} {year}
+    </div>
+
     return (
-      <div className='Column-style'>
-        {this.createBoard()}
+      <div>
+        {title}
+        <div className='Column-style'>
+          {this.createBoard()}
+        </div>
       </div>
     )
   }
