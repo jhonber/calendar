@@ -24,6 +24,11 @@ class Month extends React.Component {
         'Saturday'
       ]
     }
+
+  filterRemindersByDay (reminders, curDay) {
+    return reminders.filter((reminder) => {
+      return reminder.date.date() === curDay
+    })
   }
 
   createBoard () {
