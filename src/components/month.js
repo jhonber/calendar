@@ -10,10 +10,6 @@ class Month extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      name: 'January',
-      year: 2019,
-      day: 1,
-      board: Array(6).fill(Array(7).fill(0)),
       daysOfWeek: [
         'Sunday',
         'Monday',
@@ -24,6 +20,7 @@ class Month extends React.Component {
         'Saturday'
       ]
     }
+  }
 
   filterRemindersByDay (reminders, curDay) {
     return reminders.filter((reminder) => {
@@ -33,14 +30,15 @@ class Month extends React.Component {
 
   createBoard () {
     return (
-      this.state.board.map((rows) => {
+      this.props.storeMonth.boardCalendar.map((rows) => {
         return (
           <div key={uuid()} className='Row-style'>
             {
               rows.map((curDay, dayIndex) => {
                 const dayView = <Day
                   key={uuid()}
-                  label={curDay}
+                  label={curDay % 100}
+                  disable={curDay < 1 || curDay > 31}
                   items={this.filterRemindersByDay(this.props.reminders, curDay)}
                 />
 
@@ -72,6 +70,7 @@ class Month extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    storeMonth: state.months,
     reminders: getRemindersRange(state.reminders, state.filters)
   }
 }
