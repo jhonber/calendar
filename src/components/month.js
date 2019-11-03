@@ -82,7 +82,11 @@ class Month extends React.Component {
 
     return (
       <div>
-        {title}
+        <div className='Row-style'>
+          <span class='previous round'>&#8249;</span>
+          {title}
+          <span class='previous round'>&#8250;</span>
+        </div>
         <div className='Column-style'>
           {this.createBoard()}
         </div>

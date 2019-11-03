@@ -92,4 +92,28 @@
 
 .Title {
   font-size: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: #5f6368;
+}
+
+span {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+  margin: 3px;
+}
+
+span:hover {
+  cursor: pointer;
+  background-color: #ddd;
+  color: #5f6368;
+}
+
+.round {
+  border-radius: 50%;
 }
