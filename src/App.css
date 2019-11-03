@@ -29,6 +29,7 @@
 
 .Header {
   background-color: #3a79f7;
+  width: 105px;
 }
 
 .Day-name {
@@ -53,6 +54,16 @@
 
 .Day-label {
   display: flex;
+  color: #3c4043;
+  font-weight: 500;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.Disable-day {
+  display: flex;
+  color: #b7b7ad;
+  font-size: 12px;
 }
 
 .Row-style {

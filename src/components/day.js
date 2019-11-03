@@ -11,9 +11,10 @@ export default class Day extends React.Component {
       ? <li>{rest} more ...</li>
       : null
 
+    const classesLabel = 'Day-label' + (this.props.disable ? ' Disable-day' : '')
     return (
       <div className='Day'>
-        <div className='Day-label'>
+        <div className={classesLabel}>
           {this.props.label}
         </div>
         <div className='Items'>
