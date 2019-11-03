@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import uuid from 'uuid'
 import getRemindersRange from '../redux/selectors/reminders'
+import { incrementMonth, decrementMonth } from '../redux/actions/months'
+import { setStartDate, setEndDate } from '../redux/actions/filters'
 import Header from './header'
 import Day from './day'
 import '../App.css'
@@ -34,6 +36,9 @@ class Month extends React.Component {
         'December'
       ]
     }
+
+    this.handleNextMonth = this.handleNextMonth.bind(this)
+    this.handlePrevMonth = this.handlePrevMonth.bind(this)
   }
 
   filterRemindersByDay (reminders, curDay) {
@@ -72,8 +77,30 @@ class Month extends React.Component {
     )
   }
 
+  handleNextMonth () {
+    this.props.dispatch(incrementMonth())
+    const months = this.props.storeMonth
+    const startDate = months.startDate
+    const endDate = months.endDate
+
+    this.props.dispatch(setStartDate(startDate))
+    this.props.dispatch(setEndDate(endDate))
+  }
+
+  handlePrevMonth () {
+    this.props.dispatch(decrementMonth())
+    const months = this.props.storeMonth
+    const startDate = months.startDate
+    const endDate = months.endDate
+
+    this.props.dispatch(setStartDate(startDate))
+    this.props.dispatch(setEndDate(endDate))
+  }
+
   render () {
     console.log('List of reminders: ', this.props.reminders)
+    console.log('STATE')
+    console.log(this.props.storeMonth)
     const monthName = this.state.monthsOfYear[this.props.storeMonth.month]
     const year = this.props.storeMonth.year
     const title = <div className='Title'>
@@ -83,9 +110,19 @@ class Month extends React.Component {
     return (
       <div>
         <div className='Row-style'>
-          <span class='previous round'>&#8249;</span>
+          <span
+            onClick={this.handlePrevMonth}
+            className='previous round'
+          >
+            &#8249;
+          </span>
           {title}
-          <span class='previous round'>&#8250;</span>
+          <span
+            onClick={this.handleNextMonth}
+            className='previous round'
+          >
+            &#8250;
+          </span>
         </div>
         <div className='Column-style'>
           {this.createBoard()}
