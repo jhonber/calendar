@@ -1,12 +1,13 @@
 
-// Get sorted reminders by time
+// Get reminders in a range
 
-export default (reminders, { sortBy }) => {
-  return reminders.filter((item) => {
-    return true
+export default (reminders, { startDate, endDate }) => {
+  return reminders.filter((reminder) => {
+    const matchStartDate = reminder.date >= startDate
+    const matchEndDate = reminder.date <= endDate
+
+    return matchStartDate && matchEndDate
   }).sort((a, b) => {
-    if (sortBy === 'date') {
-      return a.time < b.time ? 1 : -1
-    }
+    return a.time > b.time ? 1 : -1
   })
 }
