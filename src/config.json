@@ -1,0 +1,8 @@
+{
+  "weather": "/weather?q=",
+  "development": {
+    "urlBase": "http://api.openweathermap.org/data/2.5",
+    "APPID": "APPID=daf9513e468f5f96391df298e0c31916"
+  },
+  "env": "development"
+}
