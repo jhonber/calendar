@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import moment from 'moment'
 import Modal from './modal'
-import CreateReminder from './addReminder'
+import CreateReminder from './createReminder'
 import { addReminder } from '../redux/actions/reminders'
 import '../App.css'
 
@@ -13,20 +13,10 @@ class Day extends React.Component {
     super(props)
     this.state = {
       showModal: false,
-      body: null,
-      color: '#FF6900',
-      text: '',
-      city: '',
-      time: new Date(),
-      date: new Date()
+      body: null
     }
     this.handleClickOnItem = this.handleClickOnItem.bind(this)
-    this.handleClickAddNewItem = this.handleClickAddNewItem.bind(this)
-    this.handleColor = this.handleColor.bind(this)
-    this.handleText = this.handleText.bind(this)
-    this.handleCity = this.handleCity.bind(this)
-    this.handleDate = this.handleDate.bind(this)
-    this.handleTime = this.handleTime.bind(this)
+    this.handleSubmitCreateReminder = this.handleSubmitCreateReminder.bind(this)
   }
 
   handleToggleModal () {
@@ -50,17 +40,11 @@ class Day extends React.Component {
     })
   }
 
-  handleClickAddNewItem (e) {
-    console.log('disable: ', this.props.disable)
-    console.log(e.target.id)
+  handleClickCreateReminder (e) {
     if (!this.props.disable && e.target.id === 'day-square') {
       const body = <CreateReminder
-        state={this.state}
-        handleColor={this.handleColor}
-        handleText={this.handleText}
-        handleCity={this.handleCity}
-        handleDate={this.handleDate}
-        handleTime={this.handleTime}
+        date={this.props.date}
+        handleSubmitCreateReminder={this.handleSubmitCreateReminder}
       />
 
       this.setState({
@@ -95,20 +79,24 @@ class Day extends React.Component {
   }
 
   handleDate (date) {
+    console.log('DATE: ', date)
     this.setState({
       date: date
+    }, () => {
+      console.log('UPDATED date')
+      console.log(this.state.date)
     })
   }
 
-  handleSubmitNewItem () {
+  handleSubmitCreateReminder (data) {
     console.log('DATA')
-    console.log(this.state)
+    console.log(data)
     this.props.dispatch(addReminder({
-      color: this.state.color,
-      text: this.state.text,
-      city: this.state.city,
-      date: moment(this.state.date),
-      time: moment(this.state.time)
+      color: data.color,
+      text: data.text,
+      city: data.city,
+      date: moment(data.date),
+      time: moment(data.time)
     }))
   }
 
@@ -124,7 +112,7 @@ class Day extends React.Component {
       <div
         className='Day'
         id='day-square'
-        onClick={(e) => this.handleClickAddNewItem(e)}
+        onClick={(e) => this.handleClickCreateReminder(e)}
       >
         <div className={classesLabel}>
           {this.props.label}
@@ -150,7 +138,7 @@ class Day extends React.Component {
           okButton
           okButtonText='Add'
           closeButton
-          handleOkButton={() => this.handleSubmitNewItem()}
+          handleOkButton={() => this.handleSubmitCreateReminder()}
           handleToggleModal={() => this.handleToggleModal()}
         />
       </div>
