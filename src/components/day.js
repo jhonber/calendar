@@ -42,20 +42,23 @@ class Day extends React.Component {
     })
   }
 
-  handleClickOnItem (item) {
-    const query = CONFIG.weather + item.city
+  handleClickOnItem (data) {
+    const query = CONFIG.weather + data.city
     const url = `${CONFIG[ENV].urlBase}${query}`
     const self = this
 
-    getRequest(url, item.city).then((res) => {
-      console.log('response: ', res)
+    getRequest(url, data.city).then((res) => {
       if (res && Object.prototype.hasOwnProperty.call(res, 'weather')) {
-        item.weather = res.weather[0].main
-        self.renderShowReminder(item)
+        self.renderShowReminder({
+          ...data,
+          weather: res.weather[0].main
+        })
+      } else {
+        self.renderShowReminder(data)
       }
     }).catch((err) => {
       console.log('Error: ', err)
-      self.renderShowReminder(item)
+      self.renderShowReminder(data)
     })
   }
 
@@ -104,14 +107,12 @@ class Day extends React.Component {
   }
 
   handleSubmitCreateReminder (data) {
-    console.log('DATA')
-    console.log(data)
     this.props.dispatch(addReminder({
       color: data.color,
       text: data.text,
       city: data.city,
       date: moment(data.date),
-      time: moment(data.time)
+      time: data.time
     }))
   }
 
