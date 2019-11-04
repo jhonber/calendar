@@ -12,7 +12,7 @@ export default class CreateReminder extends React.Component {
       text: '',
       city: '',
       date: new Date(this.props.date),
-      time: new Date(),
+      time: new Date().getTime(),
       validated: false
     }
 
@@ -44,7 +44,7 @@ export default class CreateReminder extends React.Component {
 
   handleTime (time) {
     this.setState({
-      time: time
+      time: time.getTime()
     })
   }
 
