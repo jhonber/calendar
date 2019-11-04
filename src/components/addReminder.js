@@ -1,6 +1,8 @@
 import React from 'react'
 import { Form } from 'react-bootstrap'
 import { HuePicker } from 'react-color'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
 
 export default class AddReminder extends React.Component {
   constructor (props) {
@@ -8,7 +10,9 @@ export default class AddReminder extends React.Component {
     this.state = {
       color: '#FF6900',
       text: '',
-      city: ''
+      city: '',
+      time: new Date(),
+      date: new Date()
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -34,6 +38,18 @@ export default class AddReminder extends React.Component {
     })
   }
 
+  handleTime (time) {
+    this.setState({
+      time: time
+    })
+  }
+
+  handleDate (date) {
+    this.setState({
+      date: date
+    })
+  }
+
   render () {
     console.log('state')
     console.log(this.state)
@@ -55,8 +71,21 @@ export default class AddReminder extends React.Component {
             type='text'
             placeholder='City'
           />
-          <Form.Control type='text' placeholder='Date' />
-          <Form.Control type='text' placeholder='Time' />
+          <DatePicker
+            selected={this.state.date}
+            onChange={date => this.handleDate(date)}
+          />
+
+          <DatePicker
+            selected={this.state.time}
+            onChange={time => this.handleTime(time)}
+            showTimeSelect
+            showTimeSelectOnly
+            timeFormat='HH:mm'
+            timeIntervals={60}
+            timeCaption='time'
+            dateFormat='HH:mm'
+          />
         </Form.Group>
       </Form>
     )
