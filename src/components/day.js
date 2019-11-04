@@ -122,6 +122,7 @@ class Day extends React.Component {
             {itemsToList.map((item, cnt) => {
               return (
                 <li
+                  style={{ backgroundColor: item.color }}
                   key={item.id}
                   onClick={() => this.handleClickOnItem(item)}
                 >
