@@ -117,3 +117,8 @@ span:hover {
 .round {
   border-radius: 50%;
 }
+
+.actionButton {
+  float: right;
+  margin: 2px;
+}

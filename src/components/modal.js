@@ -12,15 +12,10 @@ export default class MyModal extends React.Component {
   render () {
     const closeButton = this.props.closeButton
       ? <Button
+        className='actionButton'
+        variant='secondary'
         onClick={this.props.handleToggleModal}>
         Close
-      </Button>
-      : null
-
-    const okButton = this.props.okButton
-      ? <Button
-        onClick={this.props.handleOkButton}>
-        {this.props.okButtonText}
       </Button>
       : null
 
@@ -34,11 +29,8 @@ export default class MyModal extends React.Component {
       >
         <Modal.Body>
           {this.props.body}
-        </Modal.Body>
-        <Modal.Footer>
-          {okButton}
           {closeButton}
-        </Modal.Footer>
+        </Modal.Body>
       </Modal>
     )
   }
