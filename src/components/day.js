@@ -4,7 +4,11 @@ import moment from 'moment'
 import Modal from './modal'
 import CreateReminder from './createReminder'
 import { addReminder } from '../redux/actions/reminders'
+import CONFIG from '../config.json'
 import '../App.css'
+import { getRequest } from './apiUtils/utils.js'
+
+const ENV = CONFIG.env
 
 const MAX_ITEMS_TO_LIST = 2
 
@@ -26,17 +30,30 @@ class Day extends React.Component {
   }
 
   handleClickOnItem (item) {
-    const body = <div>
-      <span>{item.color}</span>
-      <span>{item.text}</span>
-      <span>{item.city}</span>
-      <span>{moment(item.date).format('YYYY-MM-DD')}</span>
-      <span>{moment(item.time).format('HH:MM')}</span>
-    </div>
+    const query = CONFIG.weather + item.city
+    const url = `${CONFIG[ENV].urlBase}${query}`
+    const self = this
 
-    this.setState({
-      showModal: true,
-      body: body
+    getRequest(url, item.city).then((res) => {
+      console.log('response: ', res)
+      if (res && Object.prototype.hasOwnProperty.call(res, 'weather')) {
+        const weather = res.weather[0].main
+        const body = <div>
+          <span>{item.color}</span>
+          <span>{item.text}</span>
+          <span>{item.city}</span>
+          <span>{weather}</span>
+          <span>{moment(item.date).format('YYYY-MM-DD')}</span>
+          <span>{moment(item.time).format('HH:MM')}</span>
+        </div>
+
+        self.setState({
+          showModal: true,
+          body: body
+        })
+      }
+    }).catch((err) => {
+      console.log('Error: ', err)
     })
   }
 
