@@ -1,12 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { addReminder } from '../redux/actions/reminders'
+import { getRequest } from './apiUtils/utils.js'
+import CONFIG from '../config.json'
+import '../App.css'
+
 import moment from 'moment'
 import Modal from './modal'
 import CreateReminder from './createReminder'
-import { addReminder } from '../redux/actions/reminders'
-import CONFIG from '../config.json'
-import '../App.css'
-import { getRequest } from './apiUtils/utils.js'
+import ShowReminder from './showReminder'
 
 const ENV = CONFIG.env
 
@@ -29,6 +31,17 @@ class Day extends React.Component {
     })
   }
 
+  renderShowReminder (data) {
+    const body = <ShowReminder
+      data={data}
+    />
+
+    this.setState({
+      showModal: true,
+      body: body
+    })
+  }
+
   handleClickOnItem (item) {
     const query = CONFIG.weather + item.city
     const url = `${CONFIG[ENV].urlBase}${query}`
@@ -37,23 +50,12 @@ class Day extends React.Component {
     getRequest(url, item.city).then((res) => {
       console.log('response: ', res)
       if (res && Object.prototype.hasOwnProperty.call(res, 'weather')) {
-        const weather = res.weather[0].main
-        const body = <div>
-          <span>{item.color}</span>
-          <span>{item.text}</span>
-          <span>{item.city}</span>
-          <span>{weather}</span>
-          <span>{moment(item.date).format('YYYY-MM-DD')}</span>
-          <span>{moment(item.time).format('HH:MM')}</span>
-        </div>
-
-        self.setState({
-          showModal: true,
-          body: body
-        })
+        item.weather = res.weather[0].main
+        self.renderShowReminder(item)
       }
     }).catch((err) => {
       console.log('Error: ', err)
+      self.renderShowReminder(item)
     })
   }
 
@@ -96,12 +98,8 @@ class Day extends React.Component {
   }
 
   handleDate (date) {
-    console.log('DATE: ', date)
     this.setState({
       date: date
-    }, () => {
-      console.log('UPDATED date')
-      console.log(this.state.date)
     })
   }
 
