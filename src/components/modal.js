@@ -10,6 +10,20 @@ export default class MyModal extends React.Component {
   }
 
   render () {
+    const closeButton = this.props.closeButton
+      ? <Button
+        onClick={this.props.handleToggleModal}>
+        Close
+      </Button>
+      : null
+
+    const okButton = this.props.okButton
+      ? <Button
+        onClick={this.props.handleOkButton}>
+        {this.props.okButtonText}
+      </Button>
+      : null
+
     return (
       <Modal
         show={this.props.visible}
@@ -22,7 +36,8 @@ export default class MyModal extends React.Component {
           {this.props.body}
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.handleToggleModal}>Close</Button>
+          {okButton}
+          {closeButton}
         </Modal.Footer>
       </Modal>
     )
