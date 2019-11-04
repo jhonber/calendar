@@ -136,3 +136,11 @@ span:hover {
   float: right;
   margin: 2px;
 }
+
+.showReminder {
+  color: black;
+}
+
+.showReminder ul {
+  list-style-type: none;
+}
