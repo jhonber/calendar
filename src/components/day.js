@@ -104,10 +104,10 @@ class Day extends React.Component {
     const itemsToList = this.props.items.slice(0, MAX_ITEMS_TO_LIST)
     const rest = this.props.items.length - itemsToList.length
     const overflow = rest > 0
-      ? <li>{rest} more</li>
+      ? <p>{rest} more</p>
       : null
-
     const classesLabel = 'Day-label' + (this.props.disable ? ' Disable-day' : '')
+
     return (
       <div
         className='Day'
