@@ -1,6 +1,7 @@
 import React from 'react'
 import Modal from './modal'
 import '../App.css'
+import AddReminder from './addReminder'
 
 const MAX_ITEMS_TO_LIST = 2
 
@@ -12,6 +13,7 @@ export default class Day extends React.Component {
       body: null
     }
     this.handleClickOnItem = this.handleClickOnItem.bind(this)
+    this.handleClickAddNewItem = this.handleClickAddNewItem.bind(this)
   }
 
   handleToggleModal () {
@@ -35,16 +37,32 @@ export default class Day extends React.Component {
     })
   }
 
+  handleClickAddNewItem (e) {
+    console.log('disable: ', this.props.disable)
+    console.log(e.target.id)
+    if (!this.props.disable && e.target.id === 'day-square') {
+      const body = <AddReminder />
+      this.setState({
+        showModal: true,
+        body: body
+      })
+    }
+  }
+
   render () {
     const itemsToList = this.props.items.slice(0, MAX_ITEMS_TO_LIST)
     const rest = this.props.items.length - itemsToList.length
     const overflow = rest > 0
-      ? <li>{rest} more ...</li>
+      ? <li>{rest} more</li>
       : null
 
     const classesLabel = 'Day-label' + (this.props.disable ? ' Disable-day' : '')
     return (
-      <div className='Day'>
+      <div
+        className='Day'
+        id='day-square'
+        onClick={(e) => this.handleClickAddNewItem(e)}
+      >
         <div className={classesLabel}>
           {this.props.label}
         </div>
@@ -66,6 +84,9 @@ export default class Day extends React.Component {
         <Modal
           visible={this.state.showModal}
           body={this.state.body}
+          okButton
+          okButtonText='Add'
+          closeButton
           handleToggleModal={() => this.handleToggleModal()}
         />
       </div>
