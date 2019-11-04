@@ -5,80 +5,33 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 
 export default class AddReminder extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      color: '#FF6900',
-      text: '',
-      city: '',
-      time: new Date(),
-      date: new Date()
-    }
-
-    this.handleChange = this.handleChange.bind(this)
-    this.handleText = this.handleText.bind(this)
-    this.handleCity = this.handleCity.bind(this)
-  }
-
-  handleChange (color, event) {
-    this.setState({
-      color: color.hex
-    })
-  }
-
-  handleText (e) {
-    this.setState({
-      text: e.target.value
-    })
-  }
-
-  handleCity (e) {
-    this.setState({
-      city: e.target.value
-    })
-  }
-
-  handleTime (time) {
-    this.setState({
-      time: time
-    })
-  }
-
-  handleDate (date) {
-    this.setState({
-      date: date
-    })
-  }
-
   render () {
-    console.log('state')
-    console.log(this.state)
     return (
       <Form>
         <Form.Group controlId='formBasicEmail'>
           <HuePicker
             width='100%'
-            color={this.state.color}
-            onChangeComplete={this.handleChange}
+            color={this.props.state.color}
+            onChangeComplete={this.props.handleColor}
           />
           <Form.Control
-            onChange={this.handleText}
+            onChange={(e) => this.props.handleText(e)}
             type='text'
             placeholder='Text'
           />
           <Form.Control
-            onChange={this.handleCity}
+            onChange={(e) => this.props.handleCity(e)}
             type='text'
             placeholder='City'
           />
           <DatePicker
-            selected={this.state.date}
-            onChange={date => this.handleDate(date)}
+            selected={this.props.state.date}
+            onChange={date => this.props.handleDate(date)}
           />
 
           <DatePicker
-            selected={this.state.time}
-            onChange={time => this.handleTime(time)}
+            selected={this.props.state.time}
+            onChange={time => this.props.handleTime(time)}
             showTimeSelect
             showTimeSelectOnly
             timeFormat='HH:mm'

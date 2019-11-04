@@ -1,19 +1,32 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import moment from 'moment'
 import Modal from './modal'
+import CreateReminder from './addReminder'
+import { addReminder } from '../redux/actions/reminders'
 import '../App.css'
-import AddReminder from './addReminder'
 
 const MAX_ITEMS_TO_LIST = 2
 
-export default class Day extends React.Component {
+class Day extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
       showModal: false,
-      body: null
+      body: null,
+      color: '#FF6900',
+      text: '',
+      city: '',
+      time: new Date(),
+      date: new Date()
     }
     this.handleClickOnItem = this.handleClickOnItem.bind(this)
     this.handleClickAddNewItem = this.handleClickAddNewItem.bind(this)
+    this.handleColor = this.handleColor.bind(this)
+    this.handleText = this.handleText.bind(this)
+    this.handleCity = this.handleCity.bind(this)
+    this.handleDate = this.handleDate.bind(this)
+    this.handleTime = this.handleTime.bind(this)
   }
 
   handleToggleModal () {
@@ -41,12 +54,62 @@ export default class Day extends React.Component {
     console.log('disable: ', this.props.disable)
     console.log(e.target.id)
     if (!this.props.disable && e.target.id === 'day-square') {
-      const body = <AddReminder />
+      const body = <CreateReminder
+        state={this.state}
+        handleColor={this.handleColor}
+        handleText={this.handleText}
+        handleCity={this.handleCity}
+        handleDate={this.handleDate}
+        handleTime={this.handleTime}
+      />
+
       this.setState({
         showModal: true,
         body: body
       })
     }
+  }
+
+  handleColor (color, event) {
+    this.setState({
+      color: color.hex
+    })
+  }
+
+  handleText (e) {
+    this.setState({
+      text: e.target.value
+    })
+  }
+
+  handleCity (e) {
+    this.setState({
+      city: e.target.value
+    })
+  }
+
+  handleTime (time) {
+    this.setState({
+      time: time
+    })
+  }
+
+  handleDate (date) {
+    this.setState({
+      date: date
+    })
+  }
+
+  handleSubmitNewItem () {
+    console.log('DATA')
+    console.log(this.state)
+    this.props.dispatch(addReminder({
+      color: this.state.color,
+      text: this.state.text,
+      city: this.state.city,
+      date: moment(this.state.date),
+      time: moment(this.state.time)
+    }))
   }
 
   render () {
@@ -87,9 +150,12 @@ export default class Day extends React.Component {
           okButton
           okButtonText='Add'
           closeButton
+          handleOkButton={() => this.handleSubmitNewItem()}
           handleToggleModal={() => this.handleToggleModal()}
         />
       </div>
     )
   }
 }
+
+export default connect()(Day)
