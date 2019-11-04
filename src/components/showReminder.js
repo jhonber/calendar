@@ -23,7 +23,11 @@ export default class ShowReminder extends React.Component {
         )
       } else {
         return (
-          <li key={uuid()}>{key}: {item[key]}</li>
+          <li
+            key={uuid()}
+          >
+            {item[key] ? key + ': ' : ''}{item[key]}
+          </li>
         )
       }
     })
