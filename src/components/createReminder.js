@@ -12,7 +12,8 @@ export default class CreateReminder extends React.Component {
       text: '',
       city: '',
       date: new Date(this.props.date),
-      time: new Date()
+      time: new Date(),
+      validated: false
     }
 
     this.handleColor = this.handleColor.bind(this)
@@ -57,15 +58,28 @@ export default class CreateReminder extends React.Component {
     })
   }
 
-  handleSubmit () {
-    this.props.handleSubmitCreateReminder(this.state)
+  handleSubmit (e) {
+    const form = document.getElementById('createFormId')
+    if (form.checkValidity() === false) {
+      e.preventDefault()
+      e.stopPropagation()
+    } else {
+      this.props.handleSubmitCreateReminder(this.state)
+    }
+
+    this.setState({
+      validated: true
+    })
   }
 
   render () {
-    console.log('PROPS')
-    console.log(this.props)
     return (
-      <Form>
+      <Form
+        noValidate
+        validated={this.state.validated}
+        onSubmit={this.handleSubmit}
+        id='createFormId'
+      >
         <Form.Group controlId='formBasicEmail' className='createForm'>
           <HuePicker
             width='100%'
@@ -76,12 +90,21 @@ export default class CreateReminder extends React.Component {
             onChange={(e) => this.handleText(e)}
             type='text'
             placeholder='Text'
+            maxLength={30}
+            required
           />
+          <Form.Control.Feedback type='invalid'>
+              Please enter a text (30 max)
+          </Form.Control.Feedback>
           <Form.Control
             onChange={(e) => this.handleCity(e)}
             type='text'
             placeholder='City'
+            required
           />
+          <Form.Control.Feedback type='invalid'>
+              Please enter a city
+          </Form.Control.Feedback>
           <DatePicker
             selected={this.state.date}
             onChange={date => this.handleDate(date)}
@@ -98,8 +121,9 @@ export default class CreateReminder extends React.Component {
           />
         </Form.Group>
         <Button
+          type='submit'
           className='actionButton'
-          onClick={this.handleSubmit}>
+        >
           Create
         </Button>
       </Form>
