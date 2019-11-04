@@ -54,11 +54,15 @@ class Day extends React.Component {
           weather: res.weather[0].main
         })
       } else {
-        self.renderShowReminder(data)
+        self.renderShowReminder({
+          ...data
+        })
       }
     }).catch((err) => {
       console.log('Error: ', err)
-      self.renderShowReminder(data)
+      self.renderShowReminder({
+        ...data
+      })
     })
   }
 
