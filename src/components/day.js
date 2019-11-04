@@ -40,8 +40,8 @@ class Day extends React.Component {
       <span>{item.color}</span>
       <span>{item.text}</span>
       <span>{item.city}</span>
-      <span>{item.date.format('YYYY-MM-DD')}</span>
-      <span>{item.time}</span>
+      <span>{moment(item.date).format('YYYY-MM-DD')}</span>
+      <span>{moment(item.time).format('HH:MM')}</span>
     </div>
 
     this.setState({
