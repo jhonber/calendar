@@ -8,34 +8,14 @@ import { setStartDate, setEndDate } from '../redux/actions/filters'
 import Header from './header'
 import Day from './day'
 import '../App.css'
+import { daysOfWeek, monthsOfYear } from './constants'
 
 class Month extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      daysOfWeek: [
-        'Sunday',
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday'
-      ],
-      monthsOfYear: [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December'
-      ]
+      daysOfWeek: daysOfWeek,
+      monthsOfYear: monthsOfYear
     }
 
     this.handleNextMonth = this.handleNextMonth.bind(this)
