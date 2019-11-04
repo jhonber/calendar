@@ -78,23 +78,21 @@ class Month extends React.Component {
   }
 
   handleNextMonth () {
-    this.props.dispatch(incrementMonth())
-    const months = this.props.storeMonth
-    const startDate = months.startDate
-    const endDate = months.endDate
-
-    this.props.dispatch(setStartDate(startDate))
-    this.props.dispatch(setEndDate(endDate))
+    this.props.dispatch(incrementMonth()).then(() => {
+      const startDate = this.props.storeMonth.startDate
+      const endDate = this.props.storeMonth.endDate
+      this.props.dispatch(setStartDate(startDate))
+      this.props.dispatch(setEndDate(endDate))
+    })
   }
 
   handlePrevMonth () {
-    this.props.dispatch(decrementMonth())
-    const months = this.props.storeMonth
-    const startDate = months.startDate
-    const endDate = months.endDate
-
-    this.props.dispatch(setStartDate(startDate))
-    this.props.dispatch(setEndDate(endDate))
+    this.props.dispatch(decrementMonth()).then(() => {
+      const startDate = this.props.storeMonth.startDate
+      const endDate = this.props.storeMonth.endDate
+      this.props.dispatch(setStartDate(startDate))
+      this.props.dispatch(setEndDate(endDate))
+    })
   }
 
   render () {
