@@ -165,3 +165,11 @@ span:hover {
 .holiday-label {
   color: #3a6ac8;
 }
+
+.createForm {
+  text-align: center;
+}
+
+.inputField {
+  padding: 2px;
+}
