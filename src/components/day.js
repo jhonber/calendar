@@ -64,14 +64,11 @@ class Day extends React.Component {
 
   handleClickCreateReminder (event) {
     if (!this.props.disable && event.target.id === 'day-square') {
-      console.log(this.props.date)
       this.props.handleClickCreateReminder(this.props.date)
     }
   }
 
   handleClickRemoveItem (id) {
-    console.log('FOURT')
-    console.log(id)
     if (window.confirm('Remove reminder?')) {
       this.props.dispatch(delReminder(
         { id: id }

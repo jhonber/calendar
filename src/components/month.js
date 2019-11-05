@@ -98,8 +98,6 @@ class Month extends React.Component {
   }
 
   handleClickCreateReminder (date) {
-    console.log('SECOND!')
-    console.log(date)
     this.setState({
       clickedDate: date,
       showCreateReminderModal: true
@@ -107,9 +105,6 @@ class Month extends React.Component {
   }
 
   render () {
-    console.log('List of reminders: ', this.props.reminders)
-    console.log('STATE')
-    console.log(this.props.storeMonth)
     const monthName = this.state.monthsOfYear[this.props.storeMonth.month]
     const year = this.props.storeMonth.year
     const title = <div className='Title'>

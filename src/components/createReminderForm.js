@@ -49,7 +49,6 @@ export default class CreateReminderForm extends React.Component {
   }
 
   handleDate (date) {
-    console.log('DATE: ', date)
     this.setState({
       date: date
     })

@@ -56,8 +56,6 @@ class CreateReminderModal extends React.Component {
   }
 
   render () {
-    console.log('TRIRTH!')
-    console.log(this.props)
     const body = <CreateReminderForm
       date={this.props.date}
       toggleModal={this.props.toggleModal}
