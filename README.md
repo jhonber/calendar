@@ -1,18 +1,20 @@
 # Cool Calendar :P
 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 ### Installation
 ```
-#  yarn install
+$  yarn install or npm install
 ```
 
 ### Run
 ```
-#  yarn start
+$  yarn start or npm start
 ```
 
 ### Run tests
 ```
-#  yarn tests
+$  yarn test  or npm test
 ```
 
 ### Mandatory Features
