@@ -157,3 +157,11 @@ span:hover {
 .remove {
   margin: 0px
 }
+
+.holiday {
+  background-color: #ececec;
+}
+
+.holiday-label {
+  color: #3a6ac8;
+}

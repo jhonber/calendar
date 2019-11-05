@@ -85,11 +85,18 @@ class Day extends React.Component {
     const overflow = rest > 0
       ? <p>{rest} more</p>
       : null
-    const classesLabel = 'Day-label' + (this.props.disable ? ' Disable-day' : '')
+    let classesLabel = 'Day-label' + (this.props.disable ? ' Disable-day' : '')
+    classesLabel = this.props.holiday && !this.props.disable
+      ? classesLabel + ' holiday-label'
+      : classesLabel
+
+    const classesMain = this.props.holiday
+      ? 'Day holiday'
+      : 'Day'
 
     return (
       <div
-        className='Day'
+        className={classesMain}
         id='day-square'
         onClick={(event) => this.handleClickCreateReminder(event)}
       >

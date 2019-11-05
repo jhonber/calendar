@@ -52,6 +52,7 @@ class Month extends React.Component {
                   label={(curDay % 100) < 0 ? -curDay : curDay % 100}
                   disable={curDay < 1 || curDay > 31}
                   date={date}
+                  holiday={dayIndex === 0 || dayIndex === 6}
                   handleClickCreateReminder={this.handleClickCreateReminder}
                   items={this.filterRemindersByDay(this.props.reminders, curDay)}
                 />
