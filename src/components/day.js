@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { getRequest } from './apiUtils/utils.js'
+import { delReminder } from '../redux/actions/reminders'
 import CONFIG from '../config.json'
 import '../App.css'
 
@@ -61,10 +62,20 @@ class Day extends React.Component {
     })
   }
 
-  handleClickCreateReminder (e) {
-    if (!this.props.disable && e.target.id === 'day-square') {
+  handleClickCreateReminder (event) {
+    if (!this.props.disable && event.target.id === 'day-square') {
       console.log(this.props.date)
       this.props.handleClickCreateReminder(this.props.date)
+    }
+  }
+
+  handleClickRemoveItem (id) {
+    console.log('FOURT')
+    console.log(id)
+    if (window.confirm('Remove reminder?')) {
+      this.props.dispatch(delReminder(
+        { id: id }
+      ))
     }
   }
 
@@ -80,7 +91,7 @@ class Day extends React.Component {
       <div
         className='Day'
         id='day-square'
-        onClick={(e) => this.handleClickCreateReminder(e)}
+        onClick={(event) => this.handleClickCreateReminder(event)}
       >
         <div className={classesLabel}>
           {this.props.label}
@@ -89,13 +100,22 @@ class Day extends React.Component {
           <ul>
             {itemsToList.map((item, cnt) => {
               return (
-                <li
-                  style={{ backgroundColor: item.color }}
-                  key={item.id}
-                  onClick={() => this.handleClickOnItem(item)}
-                >
-                  {item.text}
-                </li>
+                <div key={item.id + cnt} className='Row-style'>
+                  <li
+                    style={{ backgroundColor: item.color }}
+                    key={item.id}
+                    onClick={() => this.handleClickOnItem(item)}
+                  >
+                    {item.text}
+                  </li>
+                  <div
+                    onClick={() => this.handleClickRemoveItem(item.id)}
+                  >
+                    <div className=''>
+                      <p className='remove'>X</p>
+                    </div>
+                  </div>
+                </div>
               )
             })}
             {overflow}

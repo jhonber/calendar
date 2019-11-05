@@ -19,3 +19,8 @@ export const addReminder = (
     city
   }
 })
+
+export const delReminder = ({ id } = {}) => ({
+  type: 'REMOVE_REMINDER',
+  id
+})

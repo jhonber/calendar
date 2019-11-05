@@ -102,6 +102,7 @@
   margin: 2px;
   border-radius: 3px;
   white-space: nowrap;
+  width: 80%;
 }
 
 .Title {
@@ -143,4 +144,16 @@ span:hover {
 
 .showReminder ul {
   list-style-type: none;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.remove {
+  margin: 0px
 }
