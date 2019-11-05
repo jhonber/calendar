@@ -3,6 +3,11 @@ import moment from 'moment'
 import uuid from 'uuid'
 
 export default class ShowReminder extends React.Component {
+  capitalize (word) {
+    return word.charAt(0).toUpperCase() +
+      word.slice(1)
+  }
+
   renderItems (item) {
     const keysOrder = [
       'color',
@@ -22,11 +27,12 @@ export default class ShowReminder extends React.Component {
           />
         )
       } else {
+        const title = this.capitalize(item[key] ? key + ': ' : '')
         return (
           <li
             key={uuid()}
           >
-            {item[key] ? key + ': ' : ''}{item[key]}
+            {title}{item[key]}
           </li>
         )
       }
