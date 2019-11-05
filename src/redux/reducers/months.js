@@ -3,10 +3,14 @@ import moment from 'moment'
 
 const rows = 6
 const columns = 7
-let nextMonth, nextYear, nextDate, nextInitialDayOfWeek, nextNumberOfDays
+let nextMonth, nextYear, nextDate, nextInitialDayOfWeek,
+  nextNumberOfDays, lastDayPreviousMonth
 const currentDate = moment().startOf('month')
 const startDate = moment().startOf('month').format('YYYY-MM-DD')
 const endDate = moment().endOf('month').format('YYYY-MM-DD')
+
+lastDayPreviousMonth = moment(currentDate)
+  .subtract(1, 'months').endOf('month').daysInMonth()
 
 const getStartDate = (year, month) => {
   return moment(year + '-' + (month + 1) + '-01', 'YYYY-MM-DD')
@@ -16,7 +20,7 @@ const getEndDate = (year, month, days) => {
   return moment(year + '-' + (month + 1) + '-' + days, 'YYYY-MM-DD')
 }
 
-const fillBoard = (initialDayOfWeek, numberOfDays) => {
+const fillBoard = (initialDayOfWeek, numberOfDays, lastDayPreviousMonth) => {
   let cntDays = 1
 
   const board = Array(rows)
@@ -32,8 +36,15 @@ const fillBoard = (initialDayOfWeek, numberOfDays) => {
         cntDays++
       }
     }
+
+    for (let j = init - 1; j >= 0; --j) {
+      curRow[j] = -lastDayPreviousMonth
+      lastDayPreviousMonth--
+    }
+
     board[i] = curRow
   }
+
   return board
 }
 
@@ -44,12 +55,13 @@ const monthInit = {
   month: currentDate.month(),
   initialDayOfWeek: currentDate.day(),
   numberOfDays: currentDate.daysInMonth(),
-  boardCalendar: fillBoard(currentDate.day(), currentDate.daysInMonth())
+  boardCalendar: fillBoard(currentDate.day(), currentDate.daysInMonth(), lastDayPreviousMonth)
 }
 
 const months = (state = monthInit, action) => {
   switch (action.type) {
     case 'INCREMENT':
+      lastDayPreviousMonth = getStartDate(state.year, state.month).daysInMonth()
       nextMonth = (state.month + 1) % 12
       nextYear = nextMonth === 0 ? state.year + 1 : state.year
       nextDate = getStartDate(nextYear, nextMonth)
@@ -62,9 +74,10 @@ const months = (state = monthInit, action) => {
         month: nextMonth,
         initialDayOfWeek: nextInitialDayOfWeek,
         numberOfDays: nextNumberOfDays,
-        boardCalendar: fillBoard(nextInitialDayOfWeek, nextNumberOfDays)
+        boardCalendar: fillBoard(nextInitialDayOfWeek, nextNumberOfDays, lastDayPreviousMonth)
       }
     case 'DECREMET':
+      lastDayPreviousMonth = getStartDate(state.year, state.month).daysInMonth()
       nextMonth = (state.month - 1 + 12) % 12
       nextYear = nextMonth === 11 ? state.year - 1 : state.year
       nextDate = getStartDate(nextYear, nextMonth)
@@ -77,7 +90,7 @@ const months = (state = monthInit, action) => {
         month: nextMonth,
         initialDayOfWeek: nextInitialDayOfWeek,
         numberOfDays: nextNumberOfDays,
-        boardCalendar: fillBoard(nextInitialDayOfWeek, nextNumberOfDays)
+        boardCalendar: fillBoard(nextInitialDayOfWeek, nextNumberOfDays, lastDayPreviousMonth)
       }
     default:
       return state

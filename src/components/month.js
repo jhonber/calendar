@@ -49,7 +49,7 @@ class Month extends React.Component {
                 const date = this.getDate(this.props.storeMonth, curDay)
                 const dayView = <Day
                   key={uuid()}
-                  label={curDay % 100}
+                  label={(curDay % 100) < 0 ? -curDay : curDay % 100}
                   disable={curDay < 1 || curDay > 31}
                   date={date}
                   handleClickCreateReminder={this.handleClickCreateReminder}
