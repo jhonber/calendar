@@ -36,3 +36,13 @@ $  yarn test  or npm test
 - [x] Focus only in front end part
 - [x] Use git
 - [x] Use helper libraries (I used moment, react-color, react-datepicker and react-bootstrap)
+
+### Snapshots
+<img src="/docs/images/2019-11-04-234133_1366x768_scrot.png" width="40%">
+<img src="/docs/images/2019-11-04-234221_1366x768_scrot.png" width="40%">
+<img src="/docs/images/2019-11-04-234236_1366x768_scrot.png" width="40%">
+<img src="/docs/images/2019-11-04-234312_1366x768_scrot.png" width="40%">
+<img src="/docs/images/2019-11-04-234323_1366x768_scrot.png" width="40%">
+<img src="/docs/images/2019-11-04-234426_1366x768_scrot.png" width="40%">
+<img src="/docs/images/2019-11-04-234715_1366x768_scrot.png" width="40%">
+
