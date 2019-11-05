@@ -1,17 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addReminder } from '../redux/actions/reminders'
 import { getRequest } from './apiUtils/utils.js'
 import CONFIG from '../config.json'
 import '../App.css'
 
-import moment from 'moment'
 import Modal from './modal'
-import CreateReminder from './createReminder'
 import ShowReminder from './showReminder'
 
 const ENV = CONFIG.env
-
 const MAX_ITEMS_TO_LIST = 2
 
 class Day extends React.Component {
@@ -22,7 +18,6 @@ class Day extends React.Component {
       body: null
     }
     this.handleClickOnItem = this.handleClickOnItem.bind(this)
-    this.handleSubmitCreateReminder = this.handleSubmitCreateReminder.bind(this)
   }
 
   handleToggleModal () {
@@ -68,56 +63,9 @@ class Day extends React.Component {
 
   handleClickCreateReminder (e) {
     if (!this.props.disable && e.target.id === 'day-square') {
-      const body = <CreateReminder
-        date={this.props.date}
-        handleSubmitCreateReminder={this.handleSubmitCreateReminder}
-      />
-
-      this.setState({
-        showModal: true,
-        body: body
-      })
+      console.log(this.props.date)
+      this.props.handleClickCreateReminder(this.props.date)
     }
-  }
-
-  handleColor (color, event) {
-    this.setState({
-      color: color.hex
-    })
-  }
-
-  handleText (e) {
-    this.setState({
-      text: e.target.value
-    })
-  }
-
-  handleCity (e) {
-    this.setState({
-      city: e.target.value
-    })
-  }
-
-  handleTime (time) {
-    this.setState({
-      time: time
-    })
-  }
-
-  handleDate (date) {
-    this.setState({
-      date: date
-    })
-  }
-
-  handleSubmitCreateReminder (data) {
-    this.props.dispatch(addReminder({
-      color: data.color,
-      text: data.text,
-      city: data.city,
-      date: moment(data.date),
-      time: data.time
-    }))
   }
 
   render () {
@@ -156,10 +104,7 @@ class Day extends React.Component {
         <Modal
           visible={this.state.showModal}
           body={this.state.body}
-          okButton
-          okButtonText='Add'
           closeButton
-          handleOkButton={() => this.handleSubmitCreateReminder()}
           handleToggleModal={() => this.handleToggleModal()}
         />
       </div>

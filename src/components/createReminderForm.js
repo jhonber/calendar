@@ -4,7 +4,7 @@ import { HuePicker } from 'react-color'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 
-export default class CreateReminder extends React.Component {
+export default class CreateReminderForm extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -55,13 +55,14 @@ export default class CreateReminder extends React.Component {
     })
   }
 
-  handleSubmit (e) {
+  handleSubmit (event) {
+    event.preventDefault()
+    event.stopPropagation()
     const form = document.getElementById('createFormId')
-    if (form.checkValidity() === false) {
-      e.preventDefault()
-      e.stopPropagation()
-    } else {
-      this.props.handleSubmitCreateReminder(this.state)
+
+    if (form.checkValidity() !== false) {
+      this.props.handleSubmit(this.state)
+      this.props.toggleModal()
     }
 
     this.setState({

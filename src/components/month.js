@@ -5,21 +5,27 @@ import { connect } from 'react-redux'
 import getRemindersRange from '../redux/selectors/reminders'
 import { incrementMonth, decrementMonth } from '../redux/actions/months'
 import { setStartDate, setEndDate } from '../redux/actions/filters'
+import { daysOfWeek, monthsOfYear } from './constants'
+import '../App.css'
+
+import CreateReminderModal from './createReminderModal'
 import Header from './header'
 import Day from './day'
-import '../App.css'
-import { daysOfWeek, monthsOfYear } from './constants'
 
 class Month extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
       daysOfWeek: daysOfWeek,
-      monthsOfYear: monthsOfYear
+      monthsOfYear: monthsOfYear,
+      clickedDate: null,
+      showCreateReminderModal: false
     }
 
     this.handleNextMonth = this.handleNextMonth.bind(this)
     this.handlePrevMonth = this.handlePrevMonth.bind(this)
+    this.handleClickCreateReminder = this.handleClickCreateReminder.bind(this)
+    this.toggleReminderModal = this.toggleReminderModal.bind(this)
   }
 
   filterRemindersByDay (reminders, curDay) {
@@ -46,6 +52,7 @@ class Month extends React.Component {
                   label={curDay % 100}
                   disable={curDay < 1 || curDay > 31}
                   date={date}
+                  handleClickCreateReminder={this.handleClickCreateReminder}
                   items={this.filterRemindersByDay(this.props.reminders, curDay)}
                 />
 
@@ -63,6 +70,12 @@ class Month extends React.Component {
         )
       })
     )
+  }
+
+  toggleReminderModal () {
+    this.setState({
+      showCreateReminderModal: !this.state.showCreateReminderModal
+    })
   }
 
   handleNextMonth () {
@@ -83,6 +96,15 @@ class Month extends React.Component {
     })
   }
 
+  handleClickCreateReminder (date) {
+    console.log('SECOND!')
+    console.log(date)
+    this.setState({
+      clickedDate: date,
+      showCreateReminderModal: true
+    })
+  }
+
   render () {
     console.log('List of reminders: ', this.props.reminders)
     console.log('STATE')
@@ -92,6 +114,12 @@ class Month extends React.Component {
     const title = <div className='Title'>
       {monthName} {year}
     </div>
+
+    const createReminderModalView = <CreateReminderModal
+      visible={this.state.showCreateReminderModal}
+      toggleModal={this.toggleReminderModal}
+      date={this.state.clickedDate}
+    />
 
     return (
       <div>
@@ -112,6 +140,7 @@ class Month extends React.Component {
         </div>
         <div className='Column-style'>
           {this.createBoard()}
+          {createReminderModalView}
         </div>
       </div>
     )
