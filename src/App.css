@@ -114,16 +114,15 @@
 .previous {
   background-color: #f1f1f1;
   color: #5f6368;
-}
-
-span {
+  width: 40px;
+  height: 40px;
   text-decoration: none;
   display: inline-block;
   padding: 8px 16px;
   margin: 3px;
 }
 
-span:hover {
+.previous:hover {
   cursor: pointer;
   background-color: #ddd;
   color: #5f6368;
@@ -172,4 +171,26 @@ span:hover {
 
 .inputField {
   padding: 2px;
+}
+
+.edit {
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+}
+
+.edit:hover {
+  cursor: pointer;
+  background-color: #ffffff;
+  color: #ff00bf;
+}
+
+.actionsEdit {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+.show-content {
+  padding-top: 20px;
 }
