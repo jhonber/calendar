@@ -8,6 +8,15 @@ import { setStartDate, setEndDate } from '../redux/actions/filters'
 import { daysOfWeek, monthsOfYear } from './constants'
 import '../App.css'
 
+import {
+  getStartDate,
+  getEndDate,
+  getNextMonth,
+  getNextYear,
+  getPrevMonth,
+  getPrevYear
+} from '../utils'
+
 import CreateReminderModal from './createReminderModal'
 import Header from './header'
 import Day from './day'
@@ -81,17 +90,27 @@ class Month extends React.Component {
 
   handleNextMonth () {
     this.props.incrementMonth()
-    const startDate = this.props.storeMonth.startDate
-    const endDate = this.props.storeMonth.endDate
-    this.props.setStartDate(startDate)
+
+    const nextMonth = getNextMonth(this.props.storeMonth.month)
+    const nextYear = getNextYear(nextMonth, this.props.storeMonth.year)
+    const nextDate = getStartDate(nextYear, nextMonth)
+    const nextNumberOfDays = nextDate.daysInMonth()
+
+    const endDate = getEndDate(nextYear, nextMonth, nextNumberOfDays)
+    this.props.setStartDate(nextDate)
     this.props.setEndDate(endDate)
   }
 
   handlePrevMonth () {
     this.props.decrementMonth()
-    const startDate = this.props.storeMonth.startDate
-    const endDate = this.props.storeMonth.endDate
-    this.props.setStartDate(startDate)
+
+    const nextMonth = getPrevMonth(this.props.storeMonth.month)
+    const nextYear = getPrevYear(nextMonth, this.props.storeMonth.year)
+    const nextDate = getStartDate(nextYear, nextMonth)
+    const nextNumberOfDays = nextDate.daysInMonth()
+
+    const endDate = getEndDate(nextYear, nextMonth, nextNumberOfDays)
+    this.props.setStartDate(nextDate)
     this.props.setEndDate(endDate)
   }
 

@@ -1,5 +1,13 @@
 
 import moment from 'moment'
+import {
+  getStartDate,
+  getEndDate,
+  getNextMonth,
+  getNextYear,
+  getPrevMonth,
+  getPrevYear
+} from '../../utils'
 
 const rows = 6
 const columns = 7
@@ -11,14 +19,6 @@ const endDate = moment().endOf('month').format('YYYY-MM-DD')
 
 lastDayPreviousMonth = moment(currentDate)
   .subtract(1, 'months').endOf('month').daysInMonth()
-
-const getStartDate = (year, month) => {
-  return moment(year + '-' + (month + 1) + '-01', 'YYYY-MM-DD')
-}
-
-const getEndDate = (year, month, days) => {
-  return moment(year + '-' + (month + 1) + '-' + days, 'YYYY-MM-DD')
-}
 
 const fillBoard = (initialDayOfWeek, numberOfDays, lastDayPreviousMonth) => {
   let cntDays = 1
@@ -62,8 +62,8 @@ const months = (state = monthInit, action) => {
   switch (action.type) {
     case 'INCREMENT':
       lastDayPreviousMonth = getStartDate(state.year, state.month).daysInMonth()
-      nextMonth = (state.month + 1) % 12
-      nextYear = nextMonth === 0 ? state.year + 1 : state.year
+      nextMonth = getNextMonth(state.month)
+      nextYear = getNextYear(nextMonth, state.year)
       nextDate = getStartDate(nextYear, nextMonth)
       nextInitialDayOfWeek = nextDate.day()
       nextNumberOfDays = nextDate.daysInMonth()
@@ -78,8 +78,8 @@ const months = (state = monthInit, action) => {
       }
     case 'DECREMET':
       lastDayPreviousMonth = getStartDate(state.year, state.month).daysInMonth()
-      nextMonth = (state.month - 1 + 12) % 12
-      nextYear = nextMonth === 11 ? state.year - 1 : state.year
+      nextMonth = getPrevMonth(state.month)
+      nextYear = getPrevYear(nextMonth, state.year)
       nextDate = getStartDate(nextYear, nextMonth)
       nextInitialDayOfWeek = nextDate.day()
       nextNumberOfDays = nextDate.daysInMonth()
