@@ -1,24 +1,26 @@
 
-import moment from 'moment'
 import {
   getStartDate,
   getEndDate,
   getNextMonth,
   getNextYear,
   getPrevMonth,
-  getPrevYear
+  getPrevYear,
+  getCurrentDate,
+  getCurrentStartDate,
+  getCurrentEndDate,
+  getLastDayPreviousMonth
 } from '../../utils'
 
 const rows = 6
 const columns = 7
 let nextMonth, nextYear, nextDate, nextInitialDayOfWeek,
   nextNumberOfDays, lastDayPreviousMonth
-const currentDate = moment().startOf('month')
-const startDate = moment().startOf('month').format('YYYY-MM-DD')
-const endDate = moment().endOf('month').format('YYYY-MM-DD')
+const currentDate = getCurrentDate()
+const startDate = getCurrentStartDate()
+const endDate = getCurrentEndDate()
 
-lastDayPreviousMonth = moment(currentDate)
-  .subtract(1, 'months').endOf('month').daysInMonth()
+lastDayPreviousMonth = getLastDayPreviousMonth(currentDate)
 
 const fillBoard = (initialDayOfWeek, numberOfDays, lastDayPreviousMonth) => {
   let cntDays = 1
