@@ -4,7 +4,7 @@ import { HuePicker } from 'react-color'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 
-export default class CreateReminderForm extends React.Component {
+export default class ReminderForm extends React.Component {
   constructor (props) {
     super(props)
     this.state = {

@@ -17,7 +17,7 @@ jest.mock('../../App.css', () => {
 
 // handleClickCreateReminder
 
-describe('<CreateReminderForm />', () => {
+describe('<ReminderForm />', () => {
   it('should collect and validate data: kkk', () => {
 
     const props = {}

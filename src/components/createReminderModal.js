@@ -5,7 +5,7 @@ import '../App.css'
 
 import moment from 'moment'
 import Modal from './modal'
-import CreateReminderForm from './createReminderForm'
+import ReminderForm from './reminderForm'
 
 class CreateReminderModal extends React.Component {
   constructor (props) {
@@ -56,7 +56,7 @@ class CreateReminderModal extends React.Component {
   }
 
   render () {
-    const body = <CreateReminderForm
+    const body = <ReminderForm
       date={this.props.date}
       toggleModal={this.props.toggleModal}
       handleSubmit={this.handleSubmit}
