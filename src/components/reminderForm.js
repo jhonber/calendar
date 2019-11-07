@@ -4,6 +4,11 @@ import { HuePicker } from 'react-color'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 
+import {
+  getDateObjectFromString,
+  getTimeObjectFromString
+} from '../utils'
+
 export default class ReminderForm extends React.Component {
   constructor (props) {
     super(props)
@@ -11,8 +16,8 @@ export default class ReminderForm extends React.Component {
       color: props.reminder ? props.reminder.color : '#FF6900',
       text: props.reminder ? props.reminder.text : '',
       city: props.reminder ? props.reminder.city : '',
-      date: props.reminder ? props.reminder.date : props.date,
-      time: props.reminder ? props.reminder.date : props.date,
+      date: null,
+      time: null,
       validated: false
     }
 
@@ -22,6 +27,20 @@ export default class ReminderForm extends React.Component {
     this.handleDate = this.handleDate.bind(this)
     this.handleTime = this.handleTime.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  componentDidMount () {
+    if (this.props.reminder) {
+      this.setState({
+        date: getDateObjectFromString(this.props.reminder.date),
+        time: getTimeObjectFromString(this.props.reminder.time)
+      })
+    } else {
+      this.setState({
+        date: new Date(this.props.date),
+        time: new Date()
+      })
+    }
   }
 
   handleColor (color, event) {
@@ -90,6 +109,7 @@ export default class ReminderForm extends React.Component {
               <Form.Control
                 onChange={(e) => this.handleText(e)}
                 type='text'
+                value={this.state.text}
                 placeholder='Text'
                 maxLength={30}
                 required
@@ -102,6 +122,7 @@ export default class ReminderForm extends React.Component {
               <Form.Control
                 onChange={(e) => this.handleCity(e)}
                 type='text'
+                value={this.state.city}
                 placeholder='City'
                 required
               />
@@ -111,13 +132,13 @@ export default class ReminderForm extends React.Component {
             </div>
             <div className='inputField'>
               <DatePicker
-                selected={new Date(this.state.date)}
+                selected={this.state.date}
                 onChange={date => this.handleDate(date)}
               />
             </div>
             <div className='inputField'>
               <DatePicker
-                selected={new Date(this.state.time).getTime()}
+                selected={this.state.time}
                 onChange={time => this.handleTime(time)}
                 showTimeSelect
                 showTimeSelectOnly
