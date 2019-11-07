@@ -55,3 +55,25 @@ export const getStringCurrentEndDate = () => {
   return moment().format('YYYY-MM-') +
     moment().daysInMonth()
 }
+
+export const getDateObjectFromString = (dateString) => {
+  let arr = dateString.split('-')
+  arr = arr.map((val) => {
+    return parseInt(val)
+  })
+
+  return new Date(arr[0], arr[1] - 1, arr[2])
+}
+
+export const getTimeObjectFromString = (timeString) => {
+  let arr = timeString.split(':')
+  arr = arr.map((val) => {
+    return parseInt(val)
+  })
+
+  const time = new Date()
+  time.setHours(parseInt(arr[0]))
+  time.setMinutes(parseInt(arr[1]))
+
+  return time
+}
