@@ -46,6 +46,11 @@ export default class ShowReminder extends React.Component {
 
     return (
       <div className='showReminder'>
+        <p
+          onClick={() => this.props.handleClickEditReminder(item)}
+        >
+          Edit
+        </p>
         <ul>
           {this.renderItems(item)}
         </ul>
