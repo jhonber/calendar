@@ -8,11 +8,11 @@ export default class ReminderForm extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      color: '#FF6900',
-      text: '',
-      city: '',
-      date: new Date(this.props.date),
-      time: new Date(this.props.date).getTime(),
+      color: props.reminder ? props.reminder.color : '#FF6900',
+      text: props.reminder ? props.reminder.text : '',
+      city: props.reminder ? props.reminder.city : '',
+      date: new Date(props.reminder ? props.reminder.date : props.date),
+      time: new Date(props.reminder ? props.reminder.date : props.date).getTime(),
       validated: false
     }
 
