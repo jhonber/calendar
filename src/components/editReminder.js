@@ -28,6 +28,7 @@ class EditReminder extends React.Component {
         date={this.props.date}
         reminder={this.props.reminder}
         handleSubmit={this.handleSubmit}
+        labelButton='Edit'
       />
     )
   }

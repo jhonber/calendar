@@ -161,7 +161,7 @@ export default class ReminderForm extends React.Component {
             type='submit'
             className='actionButton'
           >
-            Create
+            {this.props.labelButton}
           </Button>
         </Form>
       </div>

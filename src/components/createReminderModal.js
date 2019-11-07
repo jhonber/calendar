@@ -30,6 +30,7 @@ class CreateReminderModal extends React.Component {
       date={this.props.date}
       toggleModal={this.props.toggleModal}
       handleSubmit={this.handleSubmit}
+      labelButton='Create'
     />
 
     return (
