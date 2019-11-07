@@ -8,6 +8,7 @@ import '../App.css'
 import Modal from './modal'
 import ShowReminder from './showReminder'
 import EditReminder from './editReminder'
+import ListReminders from './listReminders'
 
 const ENV = CONFIG.env
 const MAX_ITEMS_TO_LIST = 2
@@ -91,12 +92,11 @@ class Day extends React.Component {
     }
   }
 
+  handleClickShowMore () {
+    // call listReminders with showAll
+  }
+
   render () {
-    const itemsToList = this.props.items.slice(0, MAX_ITEMS_TO_LIST)
-    const rest = this.props.items.length - itemsToList.length
-    const overflow = rest > 0
-      ? <p>{rest} more</p>
-      : null
     let classesLabel = 'Day-label' + (this.props.disable ? ' Disable-day' : '')
     classesLabel = this.props.holiday && !this.props.disable
       ? classesLabel + ' holiday-label'
@@ -105,6 +105,12 @@ class Day extends React.Component {
     const classesMain = this.props.holiday
       ? 'Day holiday'
       : 'Day'
+
+    const list = <ListReminders
+      handleClick={this.handleClickOnItem}
+      reminders={this.props.reminders}
+      total={MAX_ITEMS_TO_LIST}
+    />
 
     return (
       <div
@@ -115,24 +121,7 @@ class Day extends React.Component {
         <div className={classesLabel}>
           {this.props.label}
         </div>
-        <div className='Items'>
-          <ul>
-            {itemsToList.map((item, cnt) => {
-              return (
-                <div key={item.id + cnt} className='Row-style'>
-                  <li
-                    style={{ backgroundColor: item.color }}
-                    key={item.id}
-                    onClick={() => this.handleClickOnItem(item)}
-                  >
-                    {item.text}
-                  </li>
-                </div>
-              )
-            })}
-            {overflow}
-          </ul>
-        </div>
+        {list}
         <Modal
           visible={this.state.showModal}
           body={this.state.body}
