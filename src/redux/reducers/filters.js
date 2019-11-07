@@ -1,8 +1,11 @@
 import moment from 'moment'
-// Filters Reducer
+import {
+  getStringCurrentStartDate,
+  getStringCurrentEndDate
+} from '../../utils'
 
-const stringStartDate = moment().format('YYYY-MM-01')
-const stringEndDate = moment().format('YYYY-MM-') + moment().daysInMonth()
+const stringStartDate = getStringCurrentStartDate()
+const stringEndDate = getStringCurrentEndDate()
 
 const filtersReducerDefaultState = {
   startDate: moment(stringStartDate),

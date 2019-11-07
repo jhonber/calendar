@@ -1,6 +1,5 @@
 import React from 'react'
 import uuid from 'uuid'
-import moment from 'moment'
 import { connect } from 'react-redux'
 import getRemindersRange from '../redux/selectors/reminders'
 import { incrementMonth, decrementMonth } from '../redux/actions/months'
@@ -14,7 +13,8 @@ import {
   getNextMonth,
   getNextYear,
   getPrevMonth,
-  getPrevYear
+  getPrevYear,
+  getCurrentDateByDate
 } from '../utils'
 
 import CreateReminderModal from './createReminderModal'
@@ -43,11 +43,6 @@ class Month extends React.Component {
     })
   }
 
-  getDate (data, day) {
-    return moment(data.year + '-' + (data.month + 1) +
-      '-' + day, 'YYYY-MM-DD')
-  }
-
   createBoard () {
     return (
       this.props.storeMonth.boardCalendar.map((rows) => {
@@ -55,7 +50,9 @@ class Month extends React.Component {
           <div key={uuid()} className='Row-style'>
             {
               rows.map((curDay, dayIndex) => {
-                const date = this.getDate(this.props.storeMonth, curDay)
+                const year = this.props.storeMonth.year
+                const month = this.props.storeMonth.month
+                const date = getCurrentDateByDate(year, month, curDay)
                 const dayView = <Day
                   key={uuid()}
                   label={(curDay % 100) < 0 ? -curDay : curDay % 100}

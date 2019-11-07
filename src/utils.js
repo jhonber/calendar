@@ -38,5 +38,20 @@ export const getCurrentEndDate = () => {
 
 export const getLastDayPreviousMonth = (currentDate) => {
   return moment(currentDate)
-    .subtract(1, 'months').endOf('month').daysInMonth()
+    .subtract(1, 'months').endOf('month')
+    .daysInMonth()
+}
+
+export const getCurrentDateByDate = (year, month, day) => {
+  return moment(year + '-' + (month + 1) +
+    '-' + day, 'YYYY-MM-DD')
+}
+
+export const getStringCurrentStartDate = () => {
+  return moment().format('YYYY-MM-01')
+}
+
+export const getStringCurrentEndDate = () => {
+  return moment().format('YYYY-MM-') +
+    moment().daysInMonth()
 }
