@@ -15,36 +15,6 @@ class CreateReminderModal extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleColor (color, event) {
-    this.setState({
-      color: color.hex
-    })
-  }
-
-  handleText (e) {
-    this.setState({
-      text: e.target.value
-    })
-  }
-
-  handleCity (e) {
-    this.setState({
-      city: e.target.value
-    })
-  }
-
-  handleTime (time) {
-    this.setState({
-      time: time
-    })
-  }
-
-  handleDate (date) {
-    this.setState({
-      date: date
-    })
-  }
-
   handleSubmit (data) {
     this.props.dispatch(addReminder({
       color: data.color,
