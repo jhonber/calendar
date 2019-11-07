@@ -21,6 +21,7 @@ class Day extends React.Component {
     }
     this.handleClickOnItem = this.handleClickOnItem.bind(this)
     this.handleClickEditReminder = this.handleClickEditReminder.bind(this)
+    this.handleClickRemoveReminder = this.handleClickRemoveReminder.bind(this)
   }
 
   handleToggleModal () {
@@ -32,6 +33,7 @@ class Day extends React.Component {
   renderShowReminder (data) {
     const body = <ShowReminder
       handleClickEditReminder={this.handleClickEditReminder}
+      handleClickRemoveReminder={this.handleClickRemoveReminder}
       data={data}
     />
 
@@ -81,7 +83,7 @@ class Day extends React.Component {
     })
   }
 
-  handleClickRemoveItem (id) {
+  handleClickRemoveReminder (id) {
     if (window.confirm('Remove reminder?')) {
       this.props.dispatch(delReminder(
         { id: id }
@@ -125,13 +127,6 @@ class Day extends React.Component {
                   >
                     {item.text}
                   </li>
-                  <div
-                    onClick={() => this.handleClickRemoveItem(item.id)}
-                  >
-                    <div className=''>
-                      <p className='remove'>X</p>
-                    </div>
-                  </div>
                 </div>
               )
             })}

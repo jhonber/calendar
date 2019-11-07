@@ -53,6 +53,7 @@ export default class ShowReminder extends React.Component {
           />
           <span
             className='far fa-trash-alt edit'
+            onClick={() => this.props.handleClickRemoveReminder(item.id)}
           />
         </div>
         <div className='show-content'>
