@@ -20,6 +20,12 @@ export const addReminder = (
   }
 })
 
+export const editReminder = (id, updates) => ({
+  type: 'EDIT_REMINDER',
+  id,
+  updates
+})
+
 export const delReminder = ({ id } = {}) => ({
   type: 'REMOVE_REMINDER',
   id

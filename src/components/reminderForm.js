@@ -79,8 +79,16 @@ export default class ReminderForm extends React.Component {
     const form = document.getElementById('createFormId')
 
     if (form.checkValidity() !== false) {
-      this.props.handleSubmit(this.state)
-      this.props.toggleModal()
+      if (this.props.reminder) {
+        const id = this.props.reminder.id
+        this.props.handleSubmit({
+          ...this.state,
+          id
+        })
+      } else {
+        this.props.toggleModal()
+        this.props.handleSubmit(this.state)
+      }
     }
 
     this.setState({
