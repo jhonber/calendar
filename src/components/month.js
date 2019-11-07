@@ -80,21 +80,19 @@ class Month extends React.Component {
   }
 
   handleNextMonth () {
-    this.props.dispatch(incrementMonth()).then(() => {
-      const startDate = this.props.storeMonth.startDate
-      const endDate = this.props.storeMonth.endDate
-      this.props.dispatch(setStartDate(startDate))
-      this.props.dispatch(setEndDate(endDate))
-    })
+    this.props.incrementMonth()
+    const startDate = this.props.storeMonth.startDate
+    const endDate = this.props.storeMonth.endDate
+    this.props.setStartDate(startDate)
+    this.props.setEndDate(endDate)
   }
 
   handlePrevMonth () {
-    this.props.dispatch(decrementMonth()).then(() => {
-      const startDate = this.props.storeMonth.startDate
-      const endDate = this.props.storeMonth.endDate
-      this.props.dispatch(setStartDate(startDate))
-      this.props.dispatch(setEndDate(endDate))
-    })
+    this.props.decrementMonth()
+    const startDate = this.props.storeMonth.startDate
+    const endDate = this.props.storeMonth.endDate
+    this.props.setStartDate(startDate)
+    this.props.setEndDate(endDate)
   }
 
   handleClickCreateReminder (date) {
@@ -150,4 +148,11 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Month)
+const mapDispatchProps = (dispatch) => ({
+  setStartDate: (startDate) => dispatch(setStartDate(startDate)),
+  setEndDate: (endDate) => dispatch(setEndDate(endDate)),
+  incrementMonth: () => dispatch(incrementMonth()),
+  decrementMonth: () => dispatch(decrementMonth())
+})
+
+export default connect(mapStateToProps, mapDispatchProps)(Month)
