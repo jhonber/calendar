@@ -7,6 +7,7 @@ import '../App.css'
 
 import Modal from './modal'
 import ShowReminder from './showReminder'
+import EditReminder from './editReminder'
 
 const ENV = CONFIG.env
 const MAX_ITEMS_TO_LIST = 2
@@ -19,6 +20,7 @@ class Day extends React.Component {
       body: null
     }
     this.handleClickOnItem = this.handleClickOnItem.bind(this)
+    this.handleClickEditReminder = this.handleClickEditReminder.bind(this)
   }
 
   handleToggleModal () {
@@ -29,6 +31,7 @@ class Day extends React.Component {
 
   renderShowReminder (data) {
     const body = <ShowReminder
+      handleClickEditReminder={this.handleClickEditReminder}
       data={data}
     />
 
@@ -66,6 +69,16 @@ class Day extends React.Component {
     if (!this.props.disable && event.target.id === 'day-square') {
       this.props.handleClickCreateReminder(this.props.date)
     }
+  }
+
+  handleClickEditReminder (data) {
+    const body = <EditReminder
+      reminder={data}
+    />
+
+    this.setState({
+      body: body
+    })
   }
 
   handleClickRemoveItem (id) {
