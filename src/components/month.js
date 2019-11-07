@@ -60,7 +60,7 @@ class Month extends React.Component {
                   date={date}
                   holiday={dayIndex === 0 || dayIndex === 6}
                   handleClickCreateReminder={this.handleClickCreateReminder}
-                  items={this.filterRemindersByDay(this.props.reminders, curDay)}
+                  reminders={this.filterRemindersByDay(this.props.reminders, curDay)}
                 />
 
                 const headerView = <div key={uuid()} className='Month-header Header'>

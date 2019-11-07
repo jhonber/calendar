@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { getRequest } from './apiUtils/utils.js'
 import { delReminder } from '../redux/actions/reminders'
 import CONFIG from '../config.json'
+import { MaxRemindersToList } from './constants'
 import '../App.css'
 
 import Modal from './modal'
@@ -11,7 +12,6 @@ import EditReminder from './editReminder'
 import ListReminders from './listReminders'
 
 const ENV = CONFIG.env
-const MAX_ITEMS_TO_LIST = 2
 
 class Day extends React.Component {
   constructor (props) {
@@ -20,7 +20,7 @@ class Day extends React.Component {
       showModal: false,
       body: null
     }
-    this.handleClickOnItem = this.handleClickOnItem.bind(this)
+    this.handleClickOnReminder = this.handleClickOnReminder.bind(this)
     this.handleClickEditReminder = this.handleClickEditReminder.bind(this)
     this.handleClickRemoveReminder = this.handleClickRemoveReminder.bind(this)
   }
@@ -44,7 +44,7 @@ class Day extends React.Component {
     })
   }
 
-  handleClickOnItem (data) {
+  handleClickOnReminder (data) {
     const query = CONFIG.weather + data.city
     const url = `${CONFIG[ENV].urlBase}${query}`
     const self = this
@@ -107,9 +107,9 @@ class Day extends React.Component {
       : 'Day'
 
     const list = <ListReminders
-      handleClick={this.handleClickOnItem}
+      handleClick={this.handleClickOnReminder}
       reminders={this.props.reminders}
-      total={MAX_ITEMS_TO_LIST}
+      total={MaxRemindersToList}
     />
 
     return (

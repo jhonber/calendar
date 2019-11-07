@@ -1,3 +1,5 @@
+export const MaxRemindersToList = 2
+
 export const daysOfWeek = [
   'Sunday',
   'Monday',
