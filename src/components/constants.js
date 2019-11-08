@@ -24,3 +24,18 @@ export const monthsOfYear = [
   'November',
   'December'
 ]
+
+export const colorPalette = [
+  '#f44336',
+  '#e91e63',
+  '#9c27b0',
+  '#673ab7',
+  '#2196f3',
+  '#009688',
+  '#4caf50',
+  '#8bc34a',
+  '#cddc39',
+  '#ffc107',
+  '#ff9800',
+  '#ff5722'
+]

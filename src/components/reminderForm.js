@@ -1,7 +1,8 @@
 import React from 'react'
 import { Button, Form } from 'react-bootstrap'
-import { HuePicker } from 'react-color'
+import { CirclePicker } from 'react-color'
 import DatePicker from 'react-datepicker'
+import { colorPalette } from './constants'
 import 'react-datepicker/dist/react-datepicker.css'
 
 import {
@@ -13,7 +14,7 @@ export default class ReminderForm extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      color: props.reminder ? props.reminder.color : '#FF6900',
+      color: props.reminder ? props.reminder.color : '#9c27b0',
       text: props.reminder ? props.reminder.text : '',
       city: props.reminder ? props.reminder.city : '',
       date: null,
@@ -107,9 +108,11 @@ export default class ReminderForm extends React.Component {
         >
           <Form.Group controlId='formBasicEmail' className='createForm'>
             <div className='inputField'>
-              <HuePicker
+              <CirclePicker
                 width='100%'
+                colors={colorPalette}
                 color={this.state.color}
+                circleSpacing={5}
                 onChangeComplete={this.handleColor}
               />
             </div>
