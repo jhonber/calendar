@@ -21,14 +21,14 @@ $  yarn test  or npm test
 - [x] Add reminder
 - [x] Display reminders on the calendar in the correct order
 - [x] Allow select and show propertly the color
-- [ ] Edit reminder (**I could not finish this task**)
+- [x] Edit reminder
 - [x] Call weather API (You have to use a valid city e.g. Bogota, Pereira, London, Lima )
 - [ ] Unit tests for add reminder (**Partially**, I finished only Redux tests for add reminder)
   
 
 ### Bonus
 - [x] Support more than 1 month
-- [ ] Propertly handle overflow in a day (**Partially**, you can see the text *n more* hidden items, but you can't visualize them)
+- [x] Propertly handle overflow in a day
 - [x] Delete 1 or ALL reminders per day (Delete 1 reminder at once)
 
 ### Considerations
