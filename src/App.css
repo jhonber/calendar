@@ -189,7 +189,7 @@
   color: #ff00bf;
 }
 
-.actionsEdit {
+.top-right {
   position: absolute;
   right: 15px;
   top: 15px;
@@ -236,4 +236,12 @@
   top: 15px;
   left: 15px;
   border-radius: 2px;
+}
+
+.close {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1;
+  color: #000;
+  cursor: pointer;
 }

@@ -19,6 +19,7 @@ class Day extends React.Component {
     this.state = {
       showModal: false,
       body: null,
+      showCloseTopRight: false,
       showCloseButton: true
     }
     this.handleClickOnReminder = this.handleClickOnReminder.bind(this)
@@ -43,7 +44,8 @@ class Day extends React.Component {
 
     this.setState({
       showModal: true,
-      body: body
+      body: body,
+      showCloseTopRight: false
     })
   }
 
@@ -83,7 +85,8 @@ class Day extends React.Component {
     />
 
     this.setState({
-      body: body
+      body: body,
+      showCloseTopRight: false
     })
   }
 
@@ -112,7 +115,8 @@ class Day extends React.Component {
     this.setState({
       body: body,
       showModal: true,
-      showCloseButton: false
+      showCloseButton: false,
+      showCloseTopRight: true
     })
   }
 
@@ -147,6 +151,7 @@ class Day extends React.Component {
           visible={this.state.showModal}
           body={this.state.body}
           closeButton={this.state.showCloseButton}
+          closeTopRight={this.state.showCloseTopRight}
           handleToggleModal={() => this.handleToggleModal()}
         />
       </div>

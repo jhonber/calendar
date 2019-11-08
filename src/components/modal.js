@@ -19,6 +19,14 @@ export default class MyModal extends React.Component {
       </Button>
       : null
 
+    const closeTopRight = this.props.closeTopRight
+      ? <span
+        onClick={this.props.handleToggleModal}
+        class='top-right close'>
+        x
+      </span>
+      : null
+
     return (
       <Modal
         show={this.props.visible}
@@ -28,6 +36,7 @@ export default class MyModal extends React.Component {
         centered
       >
         <Modal.Body>
+          {closeTopRight}
           {this.props.body}
           {closeButton}
         </Modal.Body>
