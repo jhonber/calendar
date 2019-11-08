@@ -41,9 +41,12 @@ export default class ShowReminder extends React.Component {
   }
 
   render () {
-    const item = this.props.data
+    const item = {
+      ...this.props.data
+    }
+
     item.date = moment(item.date).format('YYYY-MM-DD')
-    item.time = moment(item.time).format('HH:MM')
+    item.time = moment(item.time).format('HH:00')
 
     return (
       <div className='showReminder'>

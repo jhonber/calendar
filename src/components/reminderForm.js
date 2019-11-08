@@ -153,10 +153,10 @@ export default class ReminderForm extends React.Component {
                 onChange={time => this.handleTime(time)}
                 showTimeSelect
                 showTimeSelectOnly
-                timeFormat='HH:mm'
+                timeFormat='HH:00'
                 timeIntervals={60}
-                timeCaption='time'
-                dateFormat='HH:mm'
+                timeCaption='Hour'
+                dateFormat='HH:00'
               />
             </div>
           </Form.Group>
