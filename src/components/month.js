@@ -43,37 +43,56 @@ class Month extends React.Component {
     })
   }
 
+  renderDay (data) {
+    return <Day
+      key={uuid()}
+      name={data.name}
+      label={data.label}
+      disable={data.disable}
+      date={data.date}
+      holiday={data.holiday}
+      handleClickCreateReminder={data.handle}
+      reminders={data.reminders}
+    />
+  }
+
+  renderRows (rows) {
+    return rows.map((curDay, dayIndex) => {
+      const year = this.props.storeMonth.year
+      const month = this.props.storeMonth.month
+      const date = getCurrentDateByDate(year, month, curDay)
+
+      const data = {
+        name: this.state.daysOfWeek[dayIndex],
+        label: (curDay % 100) < 0 ? -curDay : curDay % 100,
+        disable: curDay < 1 || curDay > 31,
+        date: date,
+        holiday: dayIndex === 0 || dayIndex === 6,
+        handle: this.handleClickCreateReminder,
+        reminders: this.filterRemindersByDay(this.props.reminders, curDay)
+      }
+
+      const dayView = this.renderDay(data)
+      const headerView = <div
+        key={uuid()}
+        className='Month-header Header'
+      >
+        <Header
+          label={this.state.daysOfWeek[dayIndex]}
+          styleName='Day-name'
+        />
+      </div>
+
+      return (curDay === -1 ? headerView : dayView)
+    })
+  }
+
   createBoard () {
     return (
       this.props.storeMonth.boardCalendar.map((rows) => {
         return (
           <div key={uuid()} className='Row-style'>
-            {
-              rows.map((curDay, dayIndex) => {
-                const year = this.props.storeMonth.year
-                const month = this.props.storeMonth.month
-                const date = getCurrentDateByDate(year, month, curDay)
-                const dayView = <Day
-                  key={uuid()}
-                  name={this.state.daysOfWeek[dayIndex]}
-                  label={(curDay % 100) < 0 ? -curDay : curDay % 100}
-                  disable={curDay < 1 || curDay > 31}
-                  date={date}
-                  holiday={dayIndex === 0 || dayIndex === 6}
-                  handleClickCreateReminder={this.handleClickCreateReminder}
-                  reminders={this.filterRemindersByDay(this.props.reminders, curDay)}
-                />
-
-                const headerView = <div key={uuid()} className='Month-header Header'>
-                  <Header
-                    label={this.state.daysOfWeek[dayIndex]}
-                    styleName='Day-name'
-                  />
-                </div>
-
-                return (curDay === -1 ? headerView : dayView)
-              })
-            }
+            {this.renderRows(rows)}
           </div>
         )
       })
