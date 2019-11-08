@@ -71,6 +71,10 @@ class Day extends React.Component {
         ...data
       })
     })
+
+    this.setState({
+      showCloseButton: true
+    })
   }
 
   handleClickCreateReminder (event) {
