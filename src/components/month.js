@@ -55,6 +55,7 @@ class Month extends React.Component {
                 const date = getCurrentDateByDate(year, month, curDay)
                 const dayView = <Day
                   key={uuid()}
+                  name={this.state.daysOfWeek[dayIndex]}
                   label={(curDay % 100) < 0 ? -curDay : curDay % 100}
                   disable={curDay < 1 || curDay > 31}
                   date={date}

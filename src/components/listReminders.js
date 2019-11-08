@@ -30,13 +30,18 @@ class ListReminder extends React.Component {
       : 0
     const overflow = rest > 0
       ? <p
-        onClick={() => this.props.handleClickShowMore}>
+        className='overflow'
+        onClick={() => this.props.handleClickShowMore()}>
         {rest} more
       </p>
       : null
 
+    const mainClass = this.props.showAll
+      ? 'Items list-reminders'
+      : 'Items'
+
     return (
-      <div className='Items'>
+      <div className={mainClass}>
         <ul>
           {this.renderReminders(remindersToList)}
           {overflow}

@@ -18,16 +18,19 @@ class Day extends React.Component {
     super(props)
     this.state = {
       showModal: false,
-      body: null
+      body: null,
+      showCloseButton: true
     }
     this.handleClickOnReminder = this.handleClickOnReminder.bind(this)
     this.handleClickEditReminder = this.handleClickEditReminder.bind(this)
     this.handleClickRemoveReminder = this.handleClickRemoveReminder.bind(this)
+    this.handleClickShowMore = this.handleClickShowMore.bind(this)
   }
 
   handleToggleModal () {
     this.setState({
-      showModal: !this.state.showModal
+      showModal: !this.state.showModal,
+      showCloseButton: true
     })
   }
 
@@ -93,7 +96,24 @@ class Day extends React.Component {
   }
 
   handleClickShowMore () {
-    // call listReminders with showAll
+    console.log('Called handleClickShowMore!')
+    const body = <div className='body-weight'>
+      <div className='title-day'>
+        <p className='title-day-name'>{this.props.name}</p>
+        <p className='title-day-number'>{this.props.label}</p>
+      </div>
+      <ListReminders
+        handleClick={this.handleClickOnReminder}
+        reminders={this.props.reminders}
+        showAll
+      />
+    </div>
+
+    this.setState({
+      body: body,
+      showModal: true,
+      showCloseButton: false
+    })
   }
 
   render () {
@@ -108,6 +128,7 @@ class Day extends React.Component {
 
     const list = <ListReminders
       handleClick={this.handleClickOnReminder}
+      handleClickShowMore={this.handleClickShowMore}
       reminders={this.props.reminders}
       total={MaxRemindersToList}
     />
@@ -125,7 +146,7 @@ class Day extends React.Component {
         <Modal
           visible={this.state.showModal}
           body={this.state.body}
-          closeButton
+          closeButton={this.state.showCloseButton}
           handleToggleModal={() => this.handleToggleModal()}
         />
       </div>
