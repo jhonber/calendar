@@ -43,8 +43,9 @@ class Day extends React.Component {
     />
 
     this.setState({
-      showModal: true,
       body: body,
+      showModal: true,
+      showCloseButton: true,
       showCloseTopRight: false
     })
   }
@@ -70,10 +71,6 @@ class Day extends React.Component {
       self.renderShowReminder({
         ...data
       })
-    })
-
-    this.setState({
-      showCloseButton: true
     })
   }
 
