@@ -78,7 +78,8 @@ class Day extends React.Component {
   }
 
   handleClickCreateReminder (event) {
-    if (!this.props.disable && event.target.id === 'day-square') {
+    const id = event.target.id
+    if (!this.props.disable && (id === 'daySquare' || id === 'dayLabel')) {
       this.props.handleClickCreateReminder(this.props.date)
     }
   }
@@ -144,10 +145,13 @@ class Day extends React.Component {
     return (
       <div
         className={classesMain}
-        id='day-square'
+        id='daySquare'
         onClick={(event) => this.handleClickCreateReminder(event)}
       >
-        <div className={classesLabel}>
+        <div
+          className={classesLabel}
+          id='dayLabel'
+        >
           {this.props.label}
         </div>
         {list}
