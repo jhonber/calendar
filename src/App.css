@@ -85,7 +85,7 @@
   text-align: left;
   font-size: 12px;
   font-weight: bold;
-  color: #ffffff
+  color: #ffffff;
 }
 
 .Items ul {
@@ -102,10 +102,10 @@
   margin: 2px;
   border-radius: 3px;
   white-space: nowrap;
-  width: 80%;
+  width: 95%;
 }
 
-.Items:hover {
+.Items li:hover {
   cursor: pointer;
 }
 
@@ -197,4 +197,32 @@
 
 .show-content {
   padding-top: 20px;
+}
+
+.title-day {
+  text-align: center;
+}
+
+.title-day-name {
+  font-size: 15px;
+  color: #70757a;
+  margin: 0px;
+}
+
+.title-day-number {
+  margin: 0px;
+  font-size: 25px;
+}
+
+.list-reminders {
+  max-height: 200px;
+  overflow: auto;
+}
+
+.overflow {
+  cursor: pointer;
+}
+
+.body-width {
+  width: 140px;
 }
