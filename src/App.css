@@ -226,3 +226,14 @@
 .body-width {
   width: 140px;
 }
+
+.reminder-color-tag {
+  background-color:
+  blue;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  border-radius: 2px;
+}

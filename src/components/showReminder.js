@@ -23,6 +23,7 @@ export default class ShowReminder extends React.Component {
         return (
           <li
             key={uuid()}
+            className='reminder-color-tag'
             style={{ backgroundColor: item[key] }}
           />
         )
