@@ -96,11 +96,9 @@ class Day extends React.Component {
   }
 
   handleClickRemoveReminder (id) {
-    if (window.confirm('Remove reminder?')) {
-      this.props.dispatch(delReminder(
-        { id: id }
-      ))
-    }
+    this.props.dispatch(delReminder(
+      { id: id }
+    ))
   }
 
   handleClickShowMore () {
