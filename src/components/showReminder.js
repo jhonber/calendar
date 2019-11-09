@@ -1,44 +1,37 @@
 import React from 'react'
 import moment from 'moment'
-import uuid from 'uuid'
 import { Popover, OverlayTrigger } from 'react-bootstrap'
 
 export default class ShowReminder extends React.Component {
-  capitalize (word) {
-    return word.charAt(0).toUpperCase() +
-      word.slice(1)
-  }
-
   renderItems (item) {
-    const keysOrder = [
-      'color',
-      'text',
-      'city',
-      'date',
-      'time',
-      'weather'
-    ]
-
-    return keysOrder.map((key, index) => {
-      if (key === 'color') {
-        return (
-          <li
-            key={uuid()}
-            className='reminder-color-tag'
-            style={{ backgroundColor: item[key] }}
-          />
-        )
-      } else {
-        const title = this.capitalize(item[key] ? key + ': ' : '')
-        return (
-          <li
-            key={uuid()}
-          >
-            {title}{item[key]}
-          </li>
-        )
-      }
-    })
+    return (
+      <div className='Row-style-left'>
+        <p
+          className='reminder-color-tag'
+          style={{ backgroundColor: item.color }}
+        />
+        <div>
+          <div className='title-show-reminder'>
+            {item.text}
+          </div>
+          <div className='Row-style-left'>
+            <span className='title-small-show-reminder'>City:</span>
+            <span className='text-show-reminder'>{item.city}</span>
+          </div>
+          <div className='Row-style-left'>
+            <span className='title-small-show-reminder'>Weather: </span>
+            <span className='text-show-reminder'>{item.weather}</span>
+          </div>
+          <div className='Row-style-left date-show-reminder'>
+            <span>{this.props.dayName}</span>
+            <span>{this.props.monthName} {this.props.label}</span>
+          </div>
+          <div className='date-show-reminder no-padding'>
+            <span>at {item.time} </span>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   render () {
@@ -62,7 +55,7 @@ export default class ShowReminder extends React.Component {
     </Popover>
 
     return (
-      <div className='showReminder'>
+      <div>
         <div className='top-right-buttons'>
           <OverlayTrigger
             trigger='hover'
@@ -86,9 +79,7 @@ export default class ShowReminder extends React.Component {
           </OverlayTrigger>
         </div>
         <div className='show-content'>
-          <ul>
-            {this.renderItems(item)}
-          </ul>
+          {this.renderItems(item)}
         </div>
       </div>
     )

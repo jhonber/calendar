@@ -67,11 +67,18 @@
   font-size: 12px;
 }
 
-.Row-style {
+.Row-style-center {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+
+.Row-style-left {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .Column-style {
@@ -145,14 +152,6 @@
   margin: 2px;
 }
 
-.showReminder {
-  color: black;
-}
-
-.showReminder ul {
-  list-style-type: none;
-}
-
 .vertical-center {
   margin: 0;
   position: absolute;
@@ -192,17 +191,13 @@
 
 .top-right-buttons {
   position: absolute;
-  right: 15px;
-  top: 15px;
+  right: 18px;
+  top: 10px;
   font-size: 22px;
 }
 
 .top-right-buttons:hover {
   cursor: pointer;
-}
-
-.show-content {
-  padding-top: 20px;
 }
 
 .title-day {
@@ -239,7 +234,7 @@
   width: 20px;
   height: 20px;
   position: absolute;
-  top: 15px;
+  top: 55px;
   left: 15px;
   border-radius: 2px;
 }
@@ -250,4 +245,47 @@
   line-height: 1;
   color: #000;
   cursor: pointer;
+}
+
+.title-show-reminder {
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 20px;
+  padding-bottom: 10px;
+}
+
+.title-small-show-reminder {
+  font-size: 17px;
+  font-weight: 400;
+  padding-right: 5px;
+  line-height: initial;
+}
+
+.text-show-reminder {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: .2px;
+  color: #3c4043;
+  line-height: initial;
+}
+
+.date-show-reminder {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: .2px;
+  line-height: 20px;
+  color: #3c4043;
+  display: block;
+  padding-top: 8px;
+}
+
+.show-content {
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-top: 40px;
+  padding-left: 28px;
+}
+
+.no-padding {
+  padding: 0px;
 }
