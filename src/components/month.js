@@ -160,17 +160,13 @@ class Month extends React.Component {
         <div className='Row-style-center'>
           <span
             onClick={this.handlePrevMonth}
-            className='previous round'
-          >
-            &#8249;
-          </span>
+            class='fas fa-chevron-left manage-button'
+          />
           {title}
           <span
             onClick={this.handleNextMonth}
-            className='previous round'
-          >
-            &#8250;
-          </span>
+            class='fas fa-chevron-right manage-button'
+          />
         </div>
         <div className='Column-style'>
           {this.createBoard()}

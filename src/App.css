@@ -135,24 +135,18 @@
   line-height: 20px;
 }
 
-.previous {
-  background-color: #f1f1f1;
-  color: #5f6368;
-  width: 40px;
-  height: 40px;
-  text-decoration: none;
+.manage-button {
+  width: 36px;
+  color: #3c4043;
   display: inline-block;
-  padding: 8px 16px;
-  margin: 3px;
-}
-
-.previous:hover {
+  padding: 10px;
+  margin: 2px;
   cursor: pointer;
-  background-color: #ddd;
-  color: #5f6368;
 }
 
-.round {
+.manage-button:hover {
+  cursor: pointer;
+  background-color: #f1f1f1;
   border-radius: 50%;
 }
 
