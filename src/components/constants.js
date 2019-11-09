@@ -37,5 +37,7 @@ export const colorPalette = [
   '#cddc39',
   '#ffc107',
   '#ff9800',
-  '#ff5722'
+  '#ff5722',
+  '#555555',
+  '#f47373'
 ]

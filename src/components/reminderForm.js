@@ -106,10 +106,9 @@ export default class ReminderForm extends React.Component {
           onSubmit={this.handleSubmit}
           id='createFormId'
         >
-          <Form.Group controlId='formBasicEmail' className='createForm'>
-            <div className='inputField'>
+          <Form.Group controlId='formBasicEmail' className='create-form-body'>
+            <div className='inputField palette'>
               <CirclePicker
-                width='100%'
                 colors={colorPalette}
                 color={this.state.color}
                 circleSpacing={5}
