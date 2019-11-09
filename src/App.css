@@ -147,9 +147,9 @@
   border-radius: 50%;
 }
 
-.actionButton {
+.action-button {
   float: right;
-  margin: 2px;
+  margin-right: 5px;
 }
 
 .vertical-center {
@@ -172,12 +172,8 @@
   color: #3a6ac8;
 }
 
-.createForm {
-  text-align: center;
-}
-
 .inputField {
-  padding: 2px;
+  padding: 3px;
 }
 
 .edit {
@@ -291,6 +287,29 @@
 }
 
 .date-picker-style {
+  font-size: 16px;
+  font-weight: 400;
+  color:#3c4043;
+  word-wrap: break-word;
   padding: 5px;
   width: 98%;
+}
+
+.create-form {
+  text-align: center;
+}
+
+.create-form-body {
+  margin-top: 0px;
+  margin-bottom: 12px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.palette {
+  padding-left: 10px;
+}
+
+.create-button {
+  margin-right: 13px;
 }

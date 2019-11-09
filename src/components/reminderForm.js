@@ -99,7 +99,7 @@ export default class ReminderForm extends React.Component {
 
   render () {
     return (
-      <div className='createForm'>
+      <div className='create-form'>
         <Form
           noValidate
           validated={this.state.validated}
@@ -162,7 +162,7 @@ export default class ReminderForm extends React.Component {
           <Button
             size='sm'
             type='submit'
-            className='actionButton'
+            className='action-button create-button'
           >
             {this.props.labelButton}
           </Button>

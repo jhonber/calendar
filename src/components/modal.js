@@ -13,7 +13,7 @@ export default class MyModal extends React.Component {
     const closeButton = this.props.closeButton
       ? <Button
         size='sm'
-        className='actionButton'
+        className='action-button'
         variant='danger'
         onClick={this.props.handleToggleModal}>
         Close
