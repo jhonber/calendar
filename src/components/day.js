@@ -20,7 +20,7 @@ class Day extends React.Component {
       showModal: false,
       body: null,
       showCloseTopRight: false,
-      showCloseButton: true
+      showCloseButton: false
     }
     this.handleClickOnReminder = this.handleClickOnReminder.bind(this)
     this.handleClickEditReminder = this.handleClickEditReminder.bind(this)
@@ -47,7 +47,6 @@ class Day extends React.Component {
     this.setState({
       body: body,
       showModal: true,
-      showCloseButton: true,
       showCloseTopRight: false
     })
   }
@@ -119,7 +118,6 @@ class Day extends React.Component {
     this.setState({
       body: body,
       showModal: true,
-      showCloseButton: false,
       showCloseTopRight: true
     })
   }
