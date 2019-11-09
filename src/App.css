@@ -289,3 +289,8 @@
 .no-padding {
   padding: 0px;
 }
+
+.date-picker-style {
+  padding: 5px;
+  width: 98%;
+}

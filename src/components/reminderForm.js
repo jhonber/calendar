@@ -141,14 +141,14 @@ export default class ReminderForm extends React.Component {
                   Please enter a city
               </Form.Control.Feedback>
             </div>
-            <div className='inputField'>
+            <div className='inputField Row-style-center'>
               <DatePicker
+                className='date-picker-style'
                 selected={this.state.date}
                 onChange={date => this.handleDate(date)}
               />
-            </div>
-            <div className='inputField'>
               <DatePicker
+                className='date-picker-style'
                 selected={this.state.time}
                 onChange={time => this.handleTime(time)}
                 showTimeSelect
