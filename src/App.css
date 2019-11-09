@@ -44,7 +44,7 @@
   border: 1px solid #999;
   float: left;
   font-size: calc(1px + 2vmin);
-  height: 90px;
+  height: 100px;
   margin-right: -1px;
   margin-top: -1px;
   padding-right: 1px;
@@ -110,7 +110,7 @@
   display: block;
   font-weight: 700;
   text-align: left;
-  padding-top: 10px;
+  padding-top: 3px;
 }
 
 .Items li {
@@ -120,7 +120,7 @@
   border-radius: 3px;
   padding-left: 4px;
   padding-right: 6px;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
 }
 
 .Items li:hover {
