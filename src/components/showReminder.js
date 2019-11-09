@@ -1,6 +1,7 @@
 import React from 'react'
 import moment from 'moment'
 import uuid from 'uuid'
+import { Popover, OverlayTrigger } from 'react-bootstrap'
 
 export default class ShowReminder extends React.Component {
   capitalize (word) {
@@ -48,17 +49,41 @@ export default class ShowReminder extends React.Component {
     item.date = moment(item.date).format('YYYY-MM-DD')
     item.time = moment(item.time).format('HH:00')
 
+    const popOverEdit = <Popover>
+      <Popover.Content>
+        Edit reminder
+      </Popover.Content>
+    </Popover>
+
+    const popOverDelete = <Popover>
+      <Popover.Content>
+        Delete reminder
+      </Popover.Content>
+    </Popover>
+
     return (
       <div className='showReminder'>
-        <div className='top-right'>
-          <span
-            className='far fa-edit edit'
-            onClick={() => this.props.handleClickEditReminder(item)}
-          />
-          <span
-            className='far fa-trash-alt edit'
-            onClick={() => this.props.handleClickRemoveReminder(item.id)}
-          />
+        <div className='top-right-buttons'>
+          <OverlayTrigger
+            trigger='hover'
+            placement='top'
+            overlay={popOverEdit}
+          >
+            <span
+              className='fas fa-edit edit'
+              onClick={() => this.props.handleClickEditReminder(item)}
+            />
+          </OverlayTrigger>
+          <OverlayTrigger
+            trigger='hover'
+            placement='top'
+            overlay={popOverDelete}
+          >
+            <span
+              className='fas fa-trash-alt delete'
+              onClick={() => this.props.handleClickRemoveReminder(item.id)}
+            />
+          </OverlayTrigger>
         </div>
         <div className='show-content'>
           <ul>

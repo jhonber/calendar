@@ -31,7 +31,8 @@ class ListReminder extends React.Component {
     const overflow = rest > 0
       ? <p
         className='overflow'
-        onClick={() => this.props.handleClickShowMore()}>
+        onClick={() => this.props.handleClickShowMore()}
+      >
         {rest} more
       </p>
       : null
