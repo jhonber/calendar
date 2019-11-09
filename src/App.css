@@ -178,11 +178,6 @@
 
 .edit {
   margin-right: 12px;
-  color: #007bff;
-}
-
-.delete {
-  color: #dc3545;
 }
 
 .top-right-buttons {
@@ -190,6 +185,11 @@
   right: 18px;
   top: 10px;
   font-size: 22px;
+  color: #5f6368
+}
+
+.top-right-buttons-primary {
+  margin-right: 30px;
 }
 
 .top-right-buttons:hover {
@@ -233,14 +233,6 @@
   top: 55px;
   left: 15px;
   border-radius: 2px;
-}
-
-.close {
-  font-size: 1.5rem;
-  font-weight: 600;
-  line-height: 1;
-  color: #000;
-  cursor: pointer;
 }
 
 .title-show-reminder {

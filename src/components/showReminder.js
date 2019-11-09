@@ -70,7 +70,7 @@ export default class ShowReminder extends React.Component {
 
     return (
       <div>
-        <div className='top-right-buttons'>
+        <div className='top-right-buttons top-right-buttons-primary'>
           <OverlayTrigger
             trigger='hover'
             placement='top'
@@ -87,7 +87,7 @@ export default class ShowReminder extends React.Component {
             overlay={popOverDelete}
           >
             <span
-              className='fas fa-trash-alt delete'
+              className='fas fa-trash-alt'
               onClick={() => this.props.handleClickRemoveReminder(item.id)}
             />
           </OverlayTrigger>

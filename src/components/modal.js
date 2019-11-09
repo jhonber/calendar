@@ -21,11 +21,12 @@ export default class MyModal extends React.Component {
       : null
 
     const closeTopRight = this.props.closeTopRight
-      ? <span
-        onClick={this.props.handleToggleModal}
-        className='top-right-buttons close'>
-        x
-      </span>
+      ? <div className='top-right-buttons'>
+        <span
+          onClick={this.props.handleToggleModal}
+          className='fas fa-times'
+        />
+      </div>
       : null
 
     return (
