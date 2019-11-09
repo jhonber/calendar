@@ -77,9 +77,8 @@ export default class ReminderForm extends React.Component {
   handleSubmit (event) {
     event.preventDefault()
     event.stopPropagation()
-    const form = document.getElementById('createFormId')
 
-    if (form.checkValidity() !== false) {
+    if (event.target.checkValidity() !== false) {
       if (this.props.reminder) {
         const id = this.props.reminder.id
         this.props.handleSubmit({
@@ -104,7 +103,6 @@ export default class ReminderForm extends React.Component {
           noValidate
           validated={this.state.validated}
           onSubmit={this.handleSubmit}
-          id='createFormId'
         >
           <Form.Group controlId='formBasicEmail' className='create-form-body'>
             <div className='inputField palette'>
