@@ -47,7 +47,8 @@ class Day extends React.Component {
     this.setState({
       body: body,
       showModal: true,
-      showCloseTopRight: false
+      showCloseButton: false,
+      showCloseTopRight: true
     })
   }
 
@@ -89,7 +90,8 @@ class Day extends React.Component {
 
     this.setState({
       body: body,
-      showCloseTopRight: false
+      showCloseTopRight: false,
+      showCloseButton: true
     })
   }
 
