@@ -26,8 +26,8 @@ export default class ShowReminder extends React.Component {
       : null
 
     const date = <div className='Row-style-left date-show-reminder'>
-      <span>{this.props.dayName}</span>
-      <span>{this.props.monthName}{this.props.label}</span>
+      <span>{this.props.dayName}, </span>
+      <span>{this.props.monthName} {this.props.label}</span>
     </div>
 
     const time = <div className='date-show-reminder no-padding'>
