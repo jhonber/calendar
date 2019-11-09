@@ -161,6 +161,7 @@ export default class ReminderForm extends React.Component {
             </div>
           </Form.Group>
           <Button
+            size='sm'
             type='submit'
             className='actionButton'
           >

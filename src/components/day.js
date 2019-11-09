@@ -30,8 +30,7 @@ class Day extends React.Component {
 
   handleToggleModal () {
     this.setState({
-      showModal: !this.state.showModal,
-      showCloseButton: true
+      showModal: !this.state.showModal
     })
   }
 
