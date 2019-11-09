@@ -25,8 +25,7 @@ class Month extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      daysOfWeek: daysOfWeek,
-      monthsOfYear: monthsOfYear,
+      monthName: null,
       clickedDate: null,
       showCreateReminderModal: false
     }
@@ -35,6 +34,12 @@ class Month extends React.Component {
     this.handlePrevMonth = this.handlePrevMonth.bind(this)
     this.handleClickCreateReminder = this.handleClickCreateReminder.bind(this)
     this.toggleReminderModal = this.toggleReminderModal.bind(this)
+  }
+
+  componentDidMount () {
+    this.setState({
+      monthName: monthsOfYear[this.props.storeMonth.month]
+    })
   }
 
   filterRemindersByDay (reminders, curDay) {
@@ -46,7 +51,8 @@ class Month extends React.Component {
   renderDay (data) {
     return <Day
       key={uuid()}
-      name={data.name}
+      dayName={data.dayName}
+      monthName={this.state.monthName}
       label={data.label}
       disable={data.disable}
       date={data.date}
@@ -61,9 +67,8 @@ class Month extends React.Component {
       const year = this.props.storeMonth.year
       const month = this.props.storeMonth.month
       const date = getCurrentDateByDate(year, month, curDay)
-
       const data = {
-        name: this.state.daysOfWeek[dayIndex],
+        dayName: daysOfWeek[dayIndex],
         label: (curDay % 100) < 0 ? -curDay : curDay % 100,
         disable: curDay < 1 || curDay > 31,
         date: date,
@@ -78,7 +83,7 @@ class Month extends React.Component {
         className='Month-header Header'
       >
         <Header
-          label={this.state.daysOfWeek[dayIndex]}
+          label={daysOfWeek[dayIndex]}
           styleName='Day-name'
         />
       </div>
@@ -91,7 +96,7 @@ class Month extends React.Component {
     return (
       this.props.storeMonth.boardCalendar.map((rows) => {
         return (
-          <div key={uuid()} className='Row-style'>
+          <div key={uuid()} className='Row-style-center'>
             {this.renderRows(rows)}
           </div>
         )
@@ -139,10 +144,9 @@ class Month extends React.Component {
   }
 
   render () {
-    const monthName = this.state.monthsOfYear[this.props.storeMonth.month]
     const year = this.props.storeMonth.year
     const title = <div className='Title'>
-      {monthName} {year}
+      {this.state.monthName} {year}
     </div>
 
     const createReminderModalView = <CreateReminderModal
@@ -153,7 +157,7 @@ class Month extends React.Component {
 
     return (
       <div>
-        <div className='Row-style'>
+        <div className='Row-style-center'>
           <span
             onClick={this.handlePrevMonth}
             className='previous round'

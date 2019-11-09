@@ -38,6 +38,9 @@ class Day extends React.Component {
     const body = <ShowReminder
       handleClickEditReminder={this.handleClickEditReminder}
       handleClickRemoveReminder={this.handleClickRemoveReminder}
+      label={this.props.label}
+      monthName={this.props.monthName}
+      dayName={this.props.dayName}
       data={data}
     />
 
@@ -103,7 +106,7 @@ class Day extends React.Component {
     console.log('Called handleClickShowMore!')
     const body = <div className='body-weight'>
       <div className='title-day'>
-        <p className='title-day-name'>{this.props.name}</p>
+        <p className='title-day-name'>{this.props.dayName}</p>
         <p className='title-day-number'>{this.props.label}</p>
       </div>
       <ListReminders

@@ -5,7 +5,7 @@ class ListReminder extends React.Component {
   renderReminders (reminders) {
     return reminders.map((item, cnt) => {
       return (
-        <div key={item.id + cnt} className='Row-style'>
+        <div key={item.id + cnt} className='Row-style-center'>
           <li
             style={{ backgroundColor: item.color }}
             key={item.id}
