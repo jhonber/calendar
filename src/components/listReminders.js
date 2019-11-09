@@ -5,22 +5,20 @@ class ListReminder extends React.Component {
   renderReminders (reminders) {
     return reminders.map((item, cnt) => {
       return (
-        <div key={item.id + cnt} className='Row-style-center'>
-          <li
-            style={{ backgroundColor: item.color }}
-            key={item.id}
-            onClick={() => this.props.handleClick(item)}
-          >
+        <li
+          style={{ backgroundColor: item.color }}
+          key={item.id}
+          onClick={() => this.props.handleClick(item)}
+        >
+          <div className='reminder-text'>
             {item.text}
-          </li>
-        </div>
+          </div>
+        </li>
       )
     })
   }
 
   render () {
-    console.log('props**')
-    console.log(this.props)
     const remindersToList = this.props.showAll
       ? this.props.reminders
       : this.props.reminders.slice(0, this.props.total)
