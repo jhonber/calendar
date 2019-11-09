@@ -182,21 +182,23 @@
 }
 
 .edit {
-  width: 20px;
-  height: 20px;
-  margin: 5px;
+  margin-right: 12px;
+  color: #007bff;
 }
 
-.edit:hover {
-  cursor: pointer;
-  background-color: #ffffff;
-  color: #ff00bf;
+.delete {
+  color: #dc3545;
 }
 
-.top-right {
+.top-right-buttons {
   position: absolute;
   right: 15px;
   top: 15px;
+  font-size: 22px;
+}
+
+.top-right-buttons:hover {
+  cursor: pointer;
 }
 
 .show-content {
