@@ -121,9 +121,11 @@
 }
 
 .Title {
-  font-size: 20px;
+  font-size: 22px;
   margin-left: 10px;
   margin-right: 10px;
+  font-weight: 400;
+  line-height: 20px;
 }
 
 .previous {
