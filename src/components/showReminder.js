@@ -4,31 +4,45 @@ import { Popover, OverlayTrigger } from 'react-bootstrap'
 
 export default class ShowReminder extends React.Component {
   renderItems (item) {
+    const color = <p
+      className='reminder-color-tag'
+      style={{ backgroundColor: item.color }}
+    />
+
+    const text = <div className='title-show-reminder'>
+      {item.text}
+    </div>
+
+    const city = <div className='Row-style-left'>
+      <span className='title-small-show-reminder'>City:</span>
+      <span className='text-show-reminder'>{item.city}</span>
+    </div>
+
+    const weather = item.weather
+      ? <div className='Row-style-left'>
+        <span className='title-small-show-reminder'>Weather:</span>
+        <span className='text-show-reminder'>{item.weather}</span>
+      </div>
+      : null
+
+    const date = <div className='Row-style-left date-show-reminder'>
+      <span>{this.props.dayName}</span>
+      <span>{this.props.monthName}{this.props.label}</span>
+    </div>
+
+    const time = <div className='date-show-reminder no-padding'>
+      <span>at {item.time} </span>
+    </div>
+
     return (
       <div className='Row-style-left'>
-        <p
-          className='reminder-color-tag'
-          style={{ backgroundColor: item.color }}
-        />
+        {color}
         <div>
-          <div className='title-show-reminder'>
-            {item.text}
-          </div>
-          <div className='Row-style-left'>
-            <span className='title-small-show-reminder'>City:</span>
-            <span className='text-show-reminder'>{item.city}</span>
-          </div>
-          <div className='Row-style-left'>
-            <span className='title-small-show-reminder'>Weather: </span>
-            <span className='text-show-reminder'>{item.weather}</span>
-          </div>
-          <div className='Row-style-left date-show-reminder'>
-            <span>{this.props.dayName}</span>
-            <span>{this.props.monthName} {this.props.label}</span>
-          </div>
-          <div className='date-show-reminder no-padding'>
-            <span>at {item.time} </span>
-          </div>
+          {text}
+          {city}
+          {weather}
+          {date}
+          {time}
         </div>
       </div>
     )
