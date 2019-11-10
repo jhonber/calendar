@@ -31,6 +31,10 @@ describe('add reminder', () => {
     }
   })
 
+  afterEach(() => {
+    global.window.alert.mockClear()
+  })
+
   it('should render reminder form correctly', () => {
     const wrapper = shallow(<ReminderForm {...props} />)
     expect(toJSON(wrapper)).toMatchSnapshot()
@@ -69,6 +73,30 @@ describe('add reminder', () => {
     }
     const expectedError = '"text" length must be ' +
       'less than or equal to 30 characters long'
+
+    wrapper.setState(state)
+
+    wrapper.find('Form').props().onSubmit({
+      preventDefault: jest.fn(),
+      stopPropagation: jest.fn(),
+      target: {
+        checkValidity: () => true
+      }
+    })
+
+    expect(props.handleSubmit).toBeCalledTimes(1)
+
+    const messageError = window.alert.mock.calls[0][0].error.details[0].message
+    expect(messageError).toEqual(expectedError)
+  })
+
+  it('should show error: color should match pattern', () => {
+    const wrapper = shallow(<ReminderForm {...props} />)
+    const state = {
+      color: '#invalid'
+    }
+    const expectedError = '"color" with value "#invalid" ' +
+      'fails to match the required pattern: /^#[0-9a-f]{6}$/'
 
     wrapper.setState(state)
 
