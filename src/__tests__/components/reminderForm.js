@@ -160,4 +160,27 @@ describe('add reminder', () => {
     const messageError = window.alert.mock.calls[0][0].error.details[0].message
     expect(messageError).toEqual(expectedError)
   })
+
+  it('should show error: time must be a valid date', () => {
+    const wrapper = shallow(<ReminderForm {...props} />)
+    const state = {
+      time: 'invalid'
+    }
+    const expectedError = '"time" must be a valid date'
+
+    wrapper.setState(state)
+
+    wrapper.find('Form').props().onSubmit({
+      preventDefault: jest.fn(),
+      stopPropagation: jest.fn(),
+      target: {
+        checkValidity: () => true
+      }
+    })
+
+    expect(props.handleSubmit).toBeCalledTimes(0)
+
+    const messageError = window.alert.mock.calls[0][0].error.details[0].message
+    expect(messageError).toEqual(expectedError)
+  })
 })
