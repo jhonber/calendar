@@ -96,9 +96,7 @@ class Day extends React.Component {
   }
 
   handleClickRemoveReminder (id) {
-    this.props.dispatch(delReminder(
-      { id: id }
-    ))
+    this.props.delReminder(id)
   }
 
   handleClickShowMore () {
@@ -164,4 +162,8 @@ class Day extends React.Component {
   }
 }
 
-export default connect()(Day)
+const mapDispatchToProps = (dispatch) => ({
+  delReminder: (id) => dispatch(delReminder({ id: id }))
+})
+
+export default connect(null, mapDispatchToProps)(Day)
