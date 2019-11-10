@@ -90,13 +90,36 @@ describe('add reminder', () => {
     expect(messageError).toEqual(expectedError)
   })
 
-  it('should show error: color should match pattern', () => {
+  it('should show error: color fails match pattern', () => {
     const wrapper = shallow(<ReminderForm {...props} />)
     const state = {
       color: '#invalid'
     }
     const expectedError = '"color" with value "#invalid" ' +
       'fails to match the required pattern: /^#[0-9a-f]{6}$/'
+
+    wrapper.setState(state)
+
+    wrapper.find('Form').props().onSubmit({
+      preventDefault: jest.fn(),
+      stopPropagation: jest.fn(),
+      target: {
+        checkValidity: () => true
+      }
+    })
+
+    expect(props.handleSubmit).toBeCalledTimes(1)
+
+    const messageError = window.alert.mock.calls[0][0].error.details[0].message
+    expect(messageError).toEqual(expectedError)
+  })
+
+  it('should show error: city must be a string', () => {
+    const wrapper = shallow(<ReminderForm {...props} />)
+    const state = {
+      city: 1234
+    }
+    const expectedError = '"city" must be a string'
 
     wrapper.setState(state)
 
