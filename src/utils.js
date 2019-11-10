@@ -77,3 +77,7 @@ export const getTimeObjectFromString = (timeString) => {
 
   return time
 }
+
+export const genRandomNumber = (max) => {
+  return Math.floor((Math.random() * max) + 1)
+}

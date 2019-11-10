@@ -42,3 +42,24 @@ export const colorPalette = [
   '#555555',
   '#f47373'
 ]
+
+export const samplesTextForReminders = [
+  'Love For All, Hatred For None. – Khalifatul Masih III',
+  'Change the world by being yourself. – Amy Poehler',
+  'Every moment is a fresh beginning. – T.S Eliot',
+  'Never regret anything that made you smile. – Mark Twain',
+  'Die with memories, not dreams. – Unknown',
+  'Aspire to inspire before we expire. – Unknown',
+  'Everything you can imagine is real. – Pablo Picasso',
+  'Simplicity is the ultimate sophistication. – Leonardo da Vinci',
+  'Whatever you do, do it well. – Walt Disney',
+  'What we think, we become. – Buddha'
+]
+
+export const samplesCities = [
+  'Pereira',
+  'Bogota',
+  'London',
+  'Paris',
+  'Geneva'
+]
