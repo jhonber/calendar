@@ -34,7 +34,16 @@ $  yarn test  or npm test
 - [x] Use Redux or something similar
 - [x] Focus only in front end part
 - [x] Use git
-- [x] Use helper libraries (I used moment, react-color, react-datepicker and react-bootstrap)
+- [x] Use helper libraries (I used moment, react-color, react-datepicker, react-bootstrap and hapi/joi)
+
+### about tests
+Inside *\_\_tests\_\_* there are tests for redux and components, covering the action to add a reminder.
+
+To show coverage, run:
+
+```
+yarn test --coverage --watchAll
+```
 
 ### Snapshots
 <img src="/docs/images/2019-11-04-234133_1366x768_scrot.png" width="40%">
