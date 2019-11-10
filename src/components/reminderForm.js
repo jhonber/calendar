@@ -2,13 +2,31 @@ import React from 'react'
 import { Button, Form } from 'react-bootstrap'
 import { CirclePicker } from 'react-color'
 import DatePicker from 'react-datepicker'
-import { colorPalette } from './constants'
 import 'react-datepicker/dist/react-datepicker.css'
-
+import { colorPalette, MaxLengthText } from './constants'
 import {
   getDateObjectFromString,
   getTimeObjectFromString
 } from '../utils'
+
+const Joi = require('@hapi/joi')
+
+const dataForm = Joi.object({
+  color: Joi.string()
+    .pattern(/^#[0-9a-f]{6}$/)
+    .max(7)
+    .required(),
+  text: Joi.string()
+    .min(1)
+    .max(30)
+    .required(),
+  city: Joi.string()
+    .min(1)
+    .required(),
+  date: Joi.date(),
+  time: Joi.date(),
+  validated: Joi.boolean()
+})
 
 export default class ReminderForm extends React.Component {
   constructor (props) {
@@ -79,15 +97,24 @@ export default class ReminderForm extends React.Component {
     event.stopPropagation()
 
     if (event.target.checkValidity() !== false) {
-      if (this.props.reminder) {
-        const id = this.props.reminder.id
-        this.props.handleSubmit({
-          ...this.state,
-          id
-        })
+      const out = dataForm.validate(this.state)
+      console.log('out: ')
+      console.log(out)
+
+      if (Object.prototype.hasOwnProperty.call(out, 'error')) {
+        window.alert(out.error)
+        return
       } else {
-        this.props.toggleModal()
-        this.props.handleSubmit(this.state)
+        if (this.props.reminder) {
+          const id = this.props.reminder.id
+          this.props.handleSubmit({
+            ...this.state,
+            id
+          })
+        } else {
+          this.props.toggleModal()
+          this.props.handleSubmit(this.state)
+        }
       }
     }
 
@@ -119,7 +146,7 @@ export default class ReminderForm extends React.Component {
                 type='text'
                 value={this.state.text}
                 placeholder='Text'
-                maxLength={30}
+                maxLength={MaxLengthText}
                 required
               />
               <Form.Control.Feedback type='invalid'>

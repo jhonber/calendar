@@ -1,4 +1,5 @@
 export const MaxRemindersToList = 3
+export const MaxLengthText = 30
 
 export const daysOfWeek = [
   'Sunday',
