@@ -13,13 +13,13 @@ class EditReminder extends React.Component {
   }
 
   handleSubmit (data) {
-    this.props.dispatch(editReminder(data.id, {
+    this.props.editReminder(data.id, {
       color: data.color,
       text: data.text,
       city: data.city,
       date: moment(data.date),
       time: data.time
-    }))
+    })
   }
 
   render () {
@@ -34,4 +34,8 @@ class EditReminder extends React.Component {
   }
 }
 
-export default connect()(EditReminder)
+const mapDispatchToProps = (dispatch) => ({
+  editReminder: (id, reminder) => dispatch(editReminder(id, reminder))
+})
+
+export default connect(null, mapDispatchToProps)(EditReminder)
