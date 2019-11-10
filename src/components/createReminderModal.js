@@ -7,7 +7,7 @@ import moment from 'moment'
 import Modal from './modal'
 import ReminderForm from './reminderForm'
 
-class CreateReminderModal extends React.Component {
+export class CreateReminderModal extends React.Component {
   constructor (props) {
     super(props)
     this.state = {}
