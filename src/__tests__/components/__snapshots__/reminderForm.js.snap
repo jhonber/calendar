@@ -1,0 +1,177 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ReminderForm /> should render reminder form correctly 1`] = `
+<div
+  className="create-form"
+>
+  <Form
+    inline={false}
+    noValidate={true}
+    onSubmit={[Function]}
+    validated={false}
+  >
+    <FormGroup
+      className="create-form-body"
+      controlId="formBasicEmail"
+    >
+      <div
+        className="inputField palette"
+      >
+        <ColorPicker
+          circleSize={28}
+          circleSpacing={5}
+          color="#9c27b0"
+          colors={
+            Array [
+              "#f44336",
+              "#e91e63",
+              "#9c27b0",
+              "#673ab7",
+              "#2196f3",
+              "#009688",
+              "#4caf50",
+              "#8bc34a",
+              "#cddc39",
+              "#ffc107",
+              "#ff9800",
+              "#ff5722",
+              "#555555",
+              "#f47373",
+            ]
+          }
+          onChangeComplete={[Function]}
+          styles={Object {}}
+          width={252}
+        />
+      </div>
+      <div
+        className="inputField"
+      >
+        <FormControl
+          maxLength={30}
+          onChange={[Function]}
+          placeholder="Text"
+          required={true}
+          type="text"
+          value=""
+        />
+        <Feedback
+          type="invalid"
+        >
+          Please enter a text (30 max)
+        </Feedback>
+      </div>
+      <div
+        className="inputField"
+      >
+        <FormControl
+          onChange={[Function]}
+          placeholder="City"
+          required={true}
+          type="text"
+          value=""
+        />
+        <Feedback
+          type="invalid"
+        >
+          Please enter a city
+        </Feedback>
+      </div>
+      <div
+        className="inputField Row-style-center"
+      >
+        <t
+          allowSameDay={false}
+          className="date-picker-style"
+          dateFormat="MM/dd/yyyy"
+          dateFormatCalendar="LLLL yyyy"
+          disabled={false}
+          disabledKeyboardNavigation={false}
+          dropdownMode="scroll"
+          inlineFocusSelectedMonth={false}
+          monthsShown={1}
+          nextMonthButtonLabel="Next Month"
+          nextYearButtonLabel="Next Year"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClickOutside={[Function]}
+          onFocus={[Function]}
+          onInputClick={[Function]}
+          onInputError={[Function]}
+          onKeyDown={[Function]}
+          onMonthChange={[Function]}
+          onSelect={[Function]}
+          onYearChange={[Function]}
+          preventOpenOnFocus={false}
+          previousMonthButtonLabel="Previous Month"
+          previousYearButtonLabel="Previous Year"
+          readOnly={false}
+          renderDayContents={[Function]}
+          selected={2019-11-09T22:56:15.550Z}
+          shouldCloseOnSelect={true}
+          showMonthYearPicker={false}
+          showQuarterYearPicker={false}
+          showTimeInput={false}
+          showTimeSelect={false}
+          strictParsing={false}
+          timeCaption="Time"
+          timeInputLabel="Time"
+          timeIntervals={30}
+          withPortal={false}
+        />
+        <t
+          allowSameDay={false}
+          className="date-picker-style"
+          dateFormat="HH:00"
+          dateFormatCalendar="LLLL yyyy"
+          disabled={false}
+          disabledKeyboardNavigation={false}
+          dropdownMode="scroll"
+          inlineFocusSelectedMonth={false}
+          monthsShown={1}
+          nextMonthButtonLabel="Next Month"
+          nextYearButtonLabel="Next Year"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onClickOutside={[Function]}
+          onFocus={[Function]}
+          onInputClick={[Function]}
+          onInputError={[Function]}
+          onKeyDown={[Function]}
+          onMonthChange={[Function]}
+          onSelect={[Function]}
+          onYearChange={[Function]}
+          preventOpenOnFocus={false}
+          previousMonthButtonLabel="Previous Month"
+          previousYearButtonLabel="Previous Year"
+          readOnly={false}
+          renderDayContents={[Function]}
+          selected={2019-11-09T22:56:15.550Z}
+          shouldCloseOnSelect={true}
+          showMonthYearPicker={false}
+          showQuarterYearPicker={false}
+          showTimeInput={false}
+          showTimeSelect={true}
+          showTimeSelectOnly={true}
+          strictParsing={false}
+          timeCaption="Hour"
+          timeFormat="HH:00"
+          timeInputLabel="Time"
+          timeIntervals={60}
+          withPortal={false}
+        />
+      </div>
+    </FormGroup>
+    <Button
+      active={false}
+      className="action-button create-button"
+      disabled={false}
+      size="sm"
+      type="submit"
+      variant="primary"
+    >
+      Create
+    </Button>
+  </Form>
+</div>
+`;
