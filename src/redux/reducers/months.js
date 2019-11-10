@@ -12,6 +12,8 @@ import {
   getLastDayPreviousMonth
 } from '../../utils'
 
+const maxNumberOfDaysToShow = 35
+let overflowDays = false
 const rows = 6
 const columns = 7
 let nextMonth, nextYear, nextDate, nextInitialDayOfWeek,
@@ -25,9 +27,17 @@ lastDayPreviousMonth = getLastDayPreviousMonth(currentDate)
 const fillBoard = (initialDayOfWeek, numberOfDays, lastDayPreviousMonth) => {
   let cntDays = 1
 
-  const board = Array(rows)
+  const totalDaysToShow = initialDayOfWeek + numberOfDays
+  if (totalDaysToShow > maxNumberOfDaysToShow) {
+    overflowDays = true
+  } else {
+    overflowDays = false
+  }
+
+  const totalRows = rows + overflowDays
+  const board = Array(totalRows)
   board[0] = Array(columns).fill(-1)
-  for (let i = 1; i < rows; ++i) {
+  for (let i = 1; i < totalRows; ++i) {
     const curRow = Array(columns).fill(0)
     const init = (i === 1 ? initialDayOfWeek : 0)
     for (let j = init; j < columns; ++j) {
