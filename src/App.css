@@ -34,9 +34,10 @@
 
 .Day-name {
   color: white;
-  font-size: calc(1px + 2vmin);
-  padding: 2px;
-  font-weight: bold;
+  font-size: 15px;
+  line-height: 26px;
+  letter-spacing: 0.039em;
+  font-weight: 600;
 }
 
 .Day {
@@ -228,10 +229,6 @@
 
 .overflow:hover {
   background-color: rgb(218, 214, 214);
-}
-
-.body-width {
-  width: 140px;
 }
 
 .reminder-color-tag {
