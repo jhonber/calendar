@@ -132,6 +132,7 @@ export default class ReminderForm extends React.Component {
           <Form.Group controlId='formBasicEmail' className='create-form-body'>
             <div className='inputField palette'>
               <CirclePicker
+                testID='inputColorID'
                 colors={colorPalette}
                 color={this.state.color}
                 circleSpacing={5}
@@ -140,6 +141,7 @@ export default class ReminderForm extends React.Component {
             </div>
             <div className='inputField'>
               <Form.Control
+                testID='inputTextID'
                 onChange={(event) => this.handleText(event)}
                 type='text'
                 value={this.state.text}
@@ -153,6 +155,7 @@ export default class ReminderForm extends React.Component {
             </div>
             <div className='inputField'>
               <Form.Control
+                testID='inputCityID'
                 onChange={(event) => this.handleCity(event)}
                 type='text'
                 value={this.state.city}
@@ -165,11 +168,13 @@ export default class ReminderForm extends React.Component {
             </div>
             <div className='inputField Row-style-center'>
               <DatePicker
+                testID='inputDateID'
                 className='date-picker-style'
                 selected={this.state.date}
                 onChange={date => this.handleDate(date)}
               />
               <DatePicker
+                testID='inputTimeID'
                 className='date-picker-style'
                 selected={this.state.time}
                 onChange={time => this.handleTime(time)}
