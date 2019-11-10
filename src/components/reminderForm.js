@@ -62,21 +62,21 @@ export default class ReminderForm extends React.Component {
     }
   }
 
-  handleColor (color, event) {
+  handleColor (color) {
     this.setState({
       color: color.hex
     })
   }
 
-  handleText (e) {
+  handleText (event) {
     this.setState({
-      text: e.target.value
+      text: event.target.value
     })
   }
 
-  handleCity (e) {
+  handleCity (event) {
     this.setState({
-      city: e.target.value
+      city: event.target.value
     })
   }
 
@@ -140,7 +140,7 @@ export default class ReminderForm extends React.Component {
             </div>
             <div className='inputField'>
               <Form.Control
-                onChange={(e) => this.handleText(e)}
+                onChange={(event) => this.handleText(event)}
                 type='text'
                 value={this.state.text}
                 placeholder='Text'
@@ -153,7 +153,7 @@ export default class ReminderForm extends React.Component {
             </div>
             <div className='inputField'>
               <Form.Control
-                onChange={(e) => this.handleCity(e)}
+                onChange={(event) => this.handleCity(event)}
                 type='text'
                 value={this.state.city}
                 placeholder='City'
