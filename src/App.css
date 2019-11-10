@@ -41,7 +41,7 @@
 
 .Day {
   background: #fff;
-  border: 1px solid #999;
+  border:#dadce0 1px solid;
   float: left;
   font-size: calc(1px + 2vmin);
   height: 100px;
@@ -55,10 +55,12 @@
 .Day-label {
   display: flex;
   color: #3c4043;
-  font-weight: 500;
-  font-size: 12px;
-  font-weight: bold;
+  font-weight: 700;
   padding-left: 4px;
+  letter-spacing: 1.65px;
+  font-size: 12px;
+  line-height: 20px;
+  font-style: normal;
 }
 
 .Disable-day {
@@ -89,10 +91,11 @@
 }
 
 .Items {
-  line-height: 16px;
+  line-height: 17px;
   font-size: 12px;
   margin-right: 5px;
   color:#fff;
+  font-weight: 700;
 }
 
 .Items ul {
@@ -103,14 +106,13 @@
 
 .Items p {
   padding: 0 4px;
-  height: 18px;
-  line-height: 16px;
-  font-size: 13px;
-  color:#3c4043;
+  color:#737475;
   display: block;
-  font-weight: 700;
   text-align: left;
-  padding-top: 3px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  letter-spacing: 0.552px;
 }
 
 .Items li {
@@ -125,6 +127,7 @@
 
 .Items li:hover {
   cursor: pointer;
+  opacity: 0.8;
 }
 
 .Title {
@@ -221,6 +224,10 @@
 
 .overflow {
   cursor: pointer;
+}
+
+.overflow:hover {
+  background-color: rgb(218, 214, 214);
 }
 
 .body-width {
