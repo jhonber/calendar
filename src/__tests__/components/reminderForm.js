@@ -218,21 +218,21 @@ describe('add reminder', () => {
     const wrapper = shallow(<ReminderForm {...props2} />)
 
     event.target.value = reminder.text
-    wrapper.find({testID: 'inputTextID'}).props().onChange(event)
+    wrapper.find({testid: 'inputTextID'}).props().onChange(event)
     expect(wrapper.state().text).toBe(event.target.value)
 
-    wrapper.find({testID: 'inputColorID'}).props().onChangeComplete(color)
+    wrapper.find({testid: 'inputColorID'}).props().onChangeComplete(color)
     expect(wrapper.state().color).toBe(color.hex)
 
     event.target.value = reminder.city
-    wrapper.find({testID: 'inputCityID'}).props().onChange(event)
+    wrapper.find({testid: 'inputCityID'}).props().onChange(event)
     expect(wrapper.state().city).toBe(event.target.value)
 
-    wrapper.find({testID: 'inputDateID'}).props().onChange(reminder.date)
+    wrapper.find({testid: 'inputDateID'}).props().onChange(reminder.date)
     expect(wrapper.state().date).toBe(reminder.date)
 
     const curTime = new Date()
-    wrapper.find({testID: 'inputTimeID'}).props().onChange(curTime)
+    wrapper.find({testid: 'inputTimeID'}).props().onChange(curTime)
     expect(wrapper.state().time).toBe(curTime.getTime())
 
     const expectedData = {
