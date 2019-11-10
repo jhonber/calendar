@@ -4,7 +4,9 @@ import ReminderForm from '../../components/reminderForm'
 import toJSON from 'enzyme-to-json'
 import timemachine from 'timemachine'
 
-let props
+let props, reminder
+global.window.alert = jest.fn()
+
 /*eslint-disable */
 describe('add reminder', () => {
   beforeAll (() => {
@@ -12,13 +14,20 @@ describe('add reminder', () => {
       dateString: 'December 25, 1991 13:12:59'
     });
 
-    window.alert = jest.fn()
+    reminder = {
+      text: 'My cool reminder',
+      city: 'Pereira',
+      color: '#cddc39',
+      date: '2019-11-10',
+      time: '20:00'
+    }
 
     props = {
       date: new Date(),
       toggleModal: jest.fn(),
       handleSubmit: jest.fn(),
-      labelButton: 'Create'
+      labelButton: 'Create',
+      reminder: reminder
     }
   })
 
@@ -40,16 +49,26 @@ describe('add reminder', () => {
     expect(props.handleSubmit).toBeCalledTimes(0)
   })
 
-  it('should call handleSubmit: form.checkValidity() = true', () => {
+  it('should call handleSubmit: second validation should be true', () => {
     const wrapper = shallow(<ReminderForm {...props} />)
 
+    wrapper.find('Form').props().onSubmit({
+      preventDefault: jest.fn(),
+      stopPropagation: jest.fn(),
+      target: {
+        checkValidity: () => true
+      }
+    })
+    expect(props.handleSubmit).toBeCalledTimes(1)
+  })
+
+  it('should show error: maximum allowed length of text is 30', () => {
+    const wrapper = shallow(<ReminderForm {...props} />)
     const state = {
-      text: 'My cool reminder',
-      city: 'Pereira',
-      color: '#cddc39',
-      date: new Date(),
-      time: new Date()
+      text: 'The text is greater than 30 characters'
     }
+    const expectedError = '"text" length must be ' +
+      'less than or equal to 30 characters long'
 
     wrapper.setState(state)
 
@@ -62,5 +81,8 @@ describe('add reminder', () => {
     })
 
     expect(props.handleSubmit).toBeCalledTimes(1)
+
+    const messageError = window.alert.mock.calls[0][0].error.details[0].message
+    expect(messageError).toEqual(expectedError)
   })
 })

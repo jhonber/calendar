@@ -20,7 +20,7 @@ exports[`add reminder should render reminder form correctly 1`] = `
         <ColorPicker
           circleSize={28}
           circleSpacing={5}
-          color="#9c27b0"
+          color="#cddc39"
           colors={
             Array [
               "#f44336",
@@ -53,7 +53,7 @@ exports[`add reminder should render reminder form correctly 1`] = `
           placeholder="Text"
           required={true}
           type="text"
-          value=""
+          value="My cool reminder"
         />
         <Feedback
           type="invalid"
@@ -69,7 +69,7 @@ exports[`add reminder should render reminder form correctly 1`] = `
           placeholder="City"
           required={true}
           type="text"
-          value=""
+          value="Pereira"
         />
         <Feedback
           type="invalid"
@@ -107,7 +107,7 @@ exports[`add reminder should render reminder form correctly 1`] = `
           previousYearButtonLabel="Previous Year"
           readOnly={false}
           renderDayContents={[Function]}
-          selected={1991-12-25T18:12:59.000Z}
+          selected={2019-11-10T05:00:00.000Z}
           shouldCloseOnSelect={true}
           showMonthYearPicker={false}
           showQuarterYearPicker={false}
@@ -146,7 +146,7 @@ exports[`add reminder should render reminder form correctly 1`] = `
           previousYearButtonLabel="Previous Year"
           readOnly={false}
           renderDayContents={[Function]}
-          selected={1991-12-25T18:12:59.000Z}
+          selected={1991-12-26T01:00:59.000Z}
           shouldCloseOnSelect={true}
           showMonthYearPicker={false}
           showQuarterYearPicker={false}
