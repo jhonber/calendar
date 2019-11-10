@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`create reminder modal should render create reminder modal correctly 1`] = `
+<div>
+  <MyModal
+    body={
+      <ReminderForm
+        date="2019-11-10"
+        handleSubmit={[Function]}
+        labelButton="Create"
+        toggleModal={[MockFunction]}
+      />
+    }
+    closeButton={true}
+    handleToggleModal={[MockFunction]}
+    okButton={true}
+    okButtonText="Add"
+    visible={true}
+  />
+</div>
+`;
