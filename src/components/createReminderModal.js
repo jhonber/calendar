@@ -16,13 +16,13 @@ export class CreateReminderModal extends React.Component {
   }
 
   handleSubmit (data) {
-    this.props.dispatch(addReminder({
+    this.props.addReminder({
       color: data.color,
       text: data.text,
       city: data.city,
       date: moment(data.date),
       time: data.time
-    }))
+    })
   }
 
   render () {
@@ -49,4 +49,8 @@ export class CreateReminderModal extends React.Component {
   }
 }
 
-export default connect()(CreateReminderModal)
+const mapDispatchToProps = (dispatch) => ({
+  addReminder: (reminder) => dispatch(addReminder(reminder))
+})
+
+export default connect(null, mapDispatchToProps)(CreateReminderModal)
