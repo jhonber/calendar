@@ -118,6 +118,10 @@ class Month extends React.Component {
     const nextDate = getStartDate(nextYear, nextMonth)
     const nextNumberOfDays = nextDate.daysInMonth()
 
+    this.setState({
+      monthName: monthsOfYear[nextMonth]
+    })
+
     const endDate = getEndDate(nextYear, nextMonth, nextNumberOfDays)
     this.props.setStartDate(nextDate)
     this.props.setEndDate(endDate)
@@ -130,6 +134,10 @@ class Month extends React.Component {
     const nextYear = getPrevYear(nextMonth, this.props.storeMonth.year)
     const nextDate = getStartDate(nextYear, nextMonth)
     const nextNumberOfDays = nextDate.daysInMonth()
+
+    this.setState({
+      monthName: monthsOfYear[nextMonth]
+    })
 
     const endDate = getEndDate(nextYear, nextMonth, nextNumberOfDays)
     this.props.setStartDate(nextDate)
