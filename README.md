@@ -23,8 +23,7 @@ $  yarn test  or npm test
 - [x] Allow select and show propertly the color
 - [x] Edit reminder
 - [x] Call weather API (You have to use a valid city e.g. Bogota, Pereira, London, Lima )
-- [ ] Unit tests for add reminder (**Partially**, I finished only Redux tests for add reminder)
-  
+- [X] Unit tests for add reminder
 
 ### Bonus
 - [x] Support more than 1 month
