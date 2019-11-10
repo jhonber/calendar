@@ -2,6 +2,16 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### Significant changes
+- Added edit reminder feature
+- Added view for overflow of reminders per day
+- Completed unit tests for "Add reminder" action
+- Added extra validation for check data inputs in form (using @hapi/joi)
+- Fixed wrong implementation of redux actions
+- Fixed overflow of days in the current month (To visualize this, go to the month May 2020)
+- Improved UI/UX look (Added font awesome icons, new color palette, among other stuff)
+- Refactored some components to keep them simples
+
 ### Installation
 ```
 $  yarn install or npm install
