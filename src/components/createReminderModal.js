@@ -41,7 +41,6 @@ export class CreateReminderModal extends React.Component {
           okButton
           okButtonText='Add'
           closeButton
-          handleOkButton={() => this.handleSubmit()}
           handleToggleModal={this.props.toggleModal}
         />
       </div>
