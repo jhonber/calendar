@@ -86,9 +86,7 @@ describe('add reminder', () => {
     })
 
     expect(props.handleSubmit).toBeCalledTimes(0)
-
-    const messageError = window.alert.mock.calls[0][0].error.details[0].message
-    expect(messageError).toEqual(expectedError)
+    expect(window.alert).toHaveBeenCalledWith(expectedError)
   })
 
   it('should show error: color fails match pattern', () => {
@@ -110,9 +108,7 @@ describe('add reminder', () => {
     })
 
     expect(props.handleSubmit).toBeCalledTimes(0)
-
-    const messageError = window.alert.mock.calls[0][0].error.details[0].message
-    expect(messageError).toEqual(expectedError)
+    expect(window.alert).toHaveBeenCalledWith(expectedError)
   })
 
   it('should show error: city must be a string', () => {
@@ -133,9 +129,7 @@ describe('add reminder', () => {
     })
 
     expect(props.handleSubmit).toBeCalledTimes(0)
-
-    const messageError = window.alert.mock.calls[0][0].error.details[0].message
-    expect(messageError).toEqual(expectedError)
+    expect(window.alert).toHaveBeenCalledWith(expectedError)
   })
 
   it('should show error: date must be a valid date', () => {
@@ -156,9 +150,7 @@ describe('add reminder', () => {
     })
 
     expect(props.handleSubmit).toBeCalledTimes(0)
-
-    const messageError = window.alert.mock.calls[0][0].error.details[0].message
-    expect(messageError).toEqual(expectedError)
+    expect(window.alert).toHaveBeenCalledWith(expectedError)
   })
 
   it('should show error: time must be a valid date', () => {
@@ -179,8 +171,6 @@ describe('add reminder', () => {
     })
 
     expect(props.handleSubmit).toBeCalledTimes(0)
-
-    const messageError = window.alert.mock.calls[0][0].error.details[0].message
-    expect(messageError).toEqual(expectedError)
+    expect(window.alert).toHaveBeenCalledWith(expectedError)
   })
 })
