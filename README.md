@@ -22,7 +22,7 @@ $  yarn test  or npm test
 - [x] Display reminders on the calendar in the correct order
 - [x] Allow select and show propertly the color
 - [x] Edit reminder
-- [x] Call weather API (You have to use a valid city e.g. Bogota, Pereira, London, Lima )
+- [x] Call weather API (You have to use a valid city e.g. Bogota, Pereira, London, Lima) **sometimes the response from API goes slow, this causes a delay in "show reminder" view**
 - [X] Unit tests for add reminder
 
 ### Bonus
@@ -35,6 +35,7 @@ $  yarn test  or npm test
 - [x] Focus only in front end part
 - [x] Use git
 - [x] Use helper libraries (I used moment, react-color, react-datepicker, react-bootstrap and hapi/joi)
+
 
 ### about tests
 Inside *\_\_tests\_\_* there are tests for redux and components, covering the action to add a reminder.
