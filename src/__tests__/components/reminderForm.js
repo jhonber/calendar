@@ -201,28 +201,46 @@ describe('add reminder', () => {
     expect(props.handleSubmit.mock.calls[0][0]).toEqual(expectedData)
   })
 
-  it('call handle submit with correct reminder data and call toggleModal', () => {
-    const customProp = {
-      date: props.date,
-      toggleModal: props.toggleModal,
-      handleSubmit: props.handleSubmit,
-      labelButton: 'Create'
+  it('call handle submit using form inputs', () => {
+    const props2 = {...props}
+    delete props2.reminder
+
+    const event = {
+      target: {
+        value: null
+      }
     }
 
-    const wrapper = shallow(<ReminderForm {...customProp} />)
+    const color = {
+      hex: '#212529'
+    }
 
-    wrapper.setState({
-      text: reminder.text,
-      color: reminder.color,
-      city: reminder.city
-    })
+    const wrapper = shallow(<ReminderForm {...props2} />)
+
+    event.target.value = reminder.text
+    wrapper.find({testID: 'inputTextID'}).props().onChange(event)
+    expect(wrapper.state().text).toBe(event.target.value)
+
+    wrapper.find({testID: 'inputColorID'}).props().onChangeComplete(color)
+    expect(wrapper.state().color).toBe(color.hex)
+
+    event.target.value = reminder.city
+    wrapper.find({testID: 'inputCityID'}).props().onChange(event)
+    expect(wrapper.state().city).toBe(event.target.value)
+
+    wrapper.find({testID: 'inputDateID'}).props().onChange(reminder.date)
+    expect(wrapper.state().date).toBe(reminder.date)
+
+    const curTime = new Date()
+    wrapper.find({testID: 'inputTimeID'}).props().onChange(curTime)
+    expect(wrapper.state().time).toBe(curTime.getTime())
 
     const expectedData = {
       text: reminder.text,
-      color: reminder.color,
+      color: color.hex,
       city: reminder.city,
-      date: expect.any(Date),
-      time: expect.any(Date),
+      date: reminder.date,
+      time: curTime.getTime(),
       validated: expect.any(Boolean)
     }
 
