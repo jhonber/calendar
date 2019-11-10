@@ -201,7 +201,7 @@ describe('add reminder', () => {
     expect(props.handleSubmit.mock.calls[0][0]).toEqual(expectedData)
   })
 
-  it('call handle submit using form inputs', () => {
+  it('call handle submit, using form inputs to set data', () => {
     const props2 = {...props}
     delete props2.reminder
 
