@@ -233,7 +233,7 @@
   width: 20px;
   height: 20px;
   position: absolute;
-  top: 55px;
+  top: 45px;
   left: 15px;
   border-radius: 2px;
 }
@@ -273,8 +273,9 @@
 .show-content {
   align-items: flex-start;
   justify-content: flex-start;
-  padding-top: 40px;
+  padding-top: 30px;
   padding-left: 28px;
+  padding-bottom: 10px;
 }
 
 .no-padding {
