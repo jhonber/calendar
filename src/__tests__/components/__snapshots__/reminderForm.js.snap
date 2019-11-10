@@ -41,6 +41,7 @@ exports[`add reminder should render reminder form correctly 1`] = `
           }
           onChangeComplete={[Function]}
           styles={Object {}}
+          testID="inputColorID"
           width={252}
         />
       </div>
@@ -52,6 +53,7 @@ exports[`add reminder should render reminder form correctly 1`] = `
           onChange={[Function]}
           placeholder="Text"
           required={true}
+          testID="inputTextID"
           type="text"
           value="My cool reminder"
         />
@@ -68,6 +70,7 @@ exports[`add reminder should render reminder form correctly 1`] = `
           onChange={[Function]}
           placeholder="City"
           required={true}
+          testID="inputCityID"
           type="text"
           value="Pereira"
         />
@@ -114,6 +117,7 @@ exports[`add reminder should render reminder form correctly 1`] = `
           showTimeInput={false}
           showTimeSelect={false}
           strictParsing={false}
+          testID="inputDateID"
           timeCaption="Time"
           timeInputLabel="Time"
           timeIntervals={30}
@@ -154,6 +158,7 @@ exports[`add reminder should render reminder form correctly 1`] = `
           showTimeSelect={true}
           showTimeSelectOnly={true}
           strictParsing={false}
+          testID="inputTimeID"
           timeCaption="Hour"
           timeFormat="HH:00"
           timeInputLabel="Time"
