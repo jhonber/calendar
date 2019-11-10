@@ -95,26 +95,24 @@ export default class ReminderForm extends React.Component {
   handleSubmit (event) {
     event.preventDefault()
     event.stopPropagation()
+    const out = dataForm.validate(this.state)
+
+    if (Object.prototype.hasOwnProperty.call(out, 'error')) {
+      const message = out.error.details[0].message
+      window.alert(message)
+      return
+    }
 
     if (event.target.checkValidity() !== false) {
-      const out = dataForm.validate(this.state)
-      console.log('out: ')
-      console.log(out)
-
-      if (Object.prototype.hasOwnProperty.call(out, 'error')) {
-        window.alert(out.error)
-        return
+      if (this.props.reminder) {
+        const id = this.props.reminder.id
+        this.props.handleSubmit({
+          ...this.state,
+          id
+        })
       } else {
-        if (this.props.reminder) {
-          const id = this.props.reminder.id
-          this.props.handleSubmit({
-            ...this.state,
-            id
-          })
-        } else {
-          this.props.toggleModal()
-          this.props.handleSubmit(this.state)
-        }
+        this.props.toggleModal()
+        this.props.handleSubmit(this.state)
       }
     }
 
