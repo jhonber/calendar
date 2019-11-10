@@ -33,6 +33,7 @@ describe('add reminder', () => {
 
   afterEach(() => {
     global.window.alert.mockClear()
+    props.handleSubmit.mockClear()
   })
 
   it('should render reminder form correctly', () => {
@@ -84,7 +85,7 @@ describe('add reminder', () => {
       }
     })
 
-    expect(props.handleSubmit).toBeCalledTimes(1)
+    expect(props.handleSubmit).toBeCalledTimes(0)
 
     const messageError = window.alert.mock.calls[0][0].error.details[0].message
     expect(messageError).toEqual(expectedError)
@@ -108,7 +109,7 @@ describe('add reminder', () => {
       }
     })
 
-    expect(props.handleSubmit).toBeCalledTimes(1)
+    expect(props.handleSubmit).toBeCalledTimes(0)
 
     const messageError = window.alert.mock.calls[0][0].error.details[0].message
     expect(messageError).toEqual(expectedError)
@@ -131,7 +132,30 @@ describe('add reminder', () => {
       }
     })
 
-    expect(props.handleSubmit).toBeCalledTimes(1)
+    expect(props.handleSubmit).toBeCalledTimes(0)
+
+    const messageError = window.alert.mock.calls[0][0].error.details[0].message
+    expect(messageError).toEqual(expectedError)
+  })
+
+  it('should show error: date must be a valid date', () => {
+    const wrapper = shallow(<ReminderForm {...props} />)
+    const state = {
+      date: 'invalid'
+    }
+    const expectedError = '"date" must be a valid date'
+
+    wrapper.setState(state)
+
+    wrapper.find('Form').props().onSubmit({
+      preventDefault: jest.fn(),
+      stopPropagation: jest.fn(),
+      target: {
+        checkValidity: () => true
+      }
+    })
+
+    expect(props.handleSubmit).toBeCalledTimes(0)
 
     const messageError = window.alert.mock.calls[0][0].error.details[0].message
     expect(messageError).toEqual(expectedError)
