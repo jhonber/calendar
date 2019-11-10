@@ -4,10 +4,10 @@ import ReminderForm from '../../components/reminderForm'
 import toJSON from 'enzyme-to-json'
 import timemachine from 'timemachine'
 
-let props, reminder
+/*eslint-disable */
+let props, reminder, now
 global.window.alert = jest.fn()
 
-/*eslint-disable */
 describe('add reminder', () => {
   beforeAll (() => {
     timemachine.config({
@@ -15,6 +15,7 @@ describe('add reminder', () => {
     });
 
     reminder = {
+      id: 1234,
       text: 'My cool reminder',
       city: 'Pereira',
       color: '#cddc39',
@@ -22,8 +23,10 @@ describe('add reminder', () => {
       time: '20:00'
     }
 
+    now = new Date()
+
     props = {
-      date: new Date(),
+      date: now,
       toggleModal: jest.fn(),
       handleSubmit: jest.fn(),
       labelButton: 'Create',
@@ -172,5 +175,67 @@ describe('add reminder', () => {
 
     expect(props.handleSubmit).toBeCalledTimes(0)
     expect(window.alert).toHaveBeenCalledWith(expectedError)
+  })
+
+  it('call handle submit with correct reminder data', () => {
+    const wrapper = shallow(<ReminderForm {...props} />)
+    const expectedData = {
+      text: reminder.text,
+      color: reminder.color,
+      city: reminder.city,
+      date: expect.any(Date),
+      time: expect.any(Date),
+      id: reminder.id,
+      validated: expect.any(Boolean)
+    }
+
+    wrapper.find('Form').props().onSubmit({
+      preventDefault: jest.fn(),
+      stopPropagation: jest.fn(),
+      target: {
+        checkValidity: () => true
+      }
+    })
+
+    expect(props.handleSubmit).toBeCalledTimes(1)
+    expect(props.handleSubmit.mock.calls[0][0]).toEqual(expectedData)
+  })
+
+  it('call handle submit with correct reminder data and call toggleModal', () => {
+    const customProp = {
+      date: props.date,
+      toggleModal: props.toggleModal,
+      handleSubmit: props.handleSubmit,
+      labelButton: 'Create'
+    }
+
+    const wrapper = shallow(<ReminderForm {...customProp} />)
+
+    wrapper.setState({
+      text: reminder.text,
+      color: reminder.color,
+      city: reminder.city
+    })
+
+    const expectedData = {
+      text: reminder.text,
+      color: reminder.color,
+      city: reminder.city,
+      date: expect.any(Date),
+      time: expect.any(Date),
+      validated: expect.any(Boolean)
+    }
+
+    wrapper.find('Form').props().onSubmit({
+      preventDefault: jest.fn(),
+      stopPropagation: jest.fn(),
+      target: {
+        checkValidity: () => true
+      }
+    })
+
+    expect(props.toggleModal).toBeCalledTimes(1)
+    expect(props.handleSubmit).toBeCalledTimes(1)
+    expect(props.handleSubmit.mock.calls[0][0]).toEqual(expectedData)
   })
 })
