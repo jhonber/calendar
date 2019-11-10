@@ -2,18 +2,20 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import ReminderForm from '../../components/reminderForm'
 import toJSON from 'enzyme-to-json'
+import timemachine from 'timemachine'
 
-let now, props
-
+let props
 /*eslint-disable */
-describe('<ReminderForm />', () => {
+describe('add reminder', () => {
   beforeAll (() => {
-    const curDate = 1573340175550
-    now = new Date(curDate)
-    global.Date = jest.fn(() => now)
+    timemachine.config({
+      dateString: 'December 25, 1991 13:12:59'
+    });
+
+    window.alert = jest.fn()
 
     props = {
-      date: now,
+      date: new Date(),
       toggleModal: jest.fn(),
       handleSubmit: jest.fn(),
       labelButton: 'Create'
@@ -41,6 +43,16 @@ describe('<ReminderForm />', () => {
   it('should call handleSubmit: form.checkValidity() = true', () => {
     const wrapper = shallow(<ReminderForm {...props} />)
 
+    const state = {
+      text: 'My cool reminder',
+      city: 'Pereira',
+      color: '#cddc39',
+      date: new Date(),
+      time: new Date()
+    }
+
+    wrapper.setState(state)
+
     wrapper.find('Form').props().onSubmit({
       preventDefault: jest.fn(),
       stopPropagation: jest.fn(),
@@ -48,7 +60,7 @@ describe('<ReminderForm />', () => {
         checkValidity: () => true
       }
     })
+
     expect(props.handleSubmit).toBeCalledTimes(1)
   })
-
 })

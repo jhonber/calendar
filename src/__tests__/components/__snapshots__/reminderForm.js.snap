@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ReminderForm /> should render reminder form correctly 1`] = `
+exports[`add reminder should render reminder form correctly 1`] = `
 <div
   className="create-form"
 >
@@ -107,7 +107,7 @@ exports[`<ReminderForm /> should render reminder form correctly 1`] = `
           previousYearButtonLabel="Previous Year"
           readOnly={false}
           renderDayContents={[Function]}
-          selected={2019-11-09T22:56:15.550Z}
+          selected={1991-12-25T18:12:59.000Z}
           shouldCloseOnSelect={true}
           showMonthYearPicker={false}
           showQuarterYearPicker={false}
@@ -146,7 +146,7 @@ exports[`<ReminderForm /> should render reminder form correctly 1`] = `
           previousYearButtonLabel="Previous Year"
           readOnly={false}
           renderDayContents={[Function]}
-          selected={2019-11-09T22:56:15.550Z}
+          selected={1991-12-25T18:12:59.000Z}
           shouldCloseOnSelect={true}
           showMonthYearPicker={false}
           showQuarterYearPicker={false}
