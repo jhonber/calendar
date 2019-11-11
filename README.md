@@ -58,3 +58,8 @@ yarn test --coverage --watchAll
 
 ### Snapshots
 
+<img src="/docs/images/1.png" width="40%">
+<img src="/docs/images/2.png" width="40%">
+<img src="/docs/images/3.png" width="40%">
+<img src="/docs/images/4.png" width="40%">
+<img src="/docs/images/5.png" width="40%">
