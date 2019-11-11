@@ -10,7 +10,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Fixed wrong implementation of redux actions
 - Fixed overflow of days in the current month (To visualize this, go to the month May 2020)
 - Improved UI/UX look (Added font awesome icons, new color palette, among other stuff)
-- Refactored some components to keep them simples
+- Refactored some components to keep them simple
 
 ### Installation
 ```
